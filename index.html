@@ -152,16 +152,12 @@
         <div class="index-excerpt" >
           <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
 Quick StartCreate a new post1$ hexo new "My New Post"
-
 More info: Writing
 Run server1$ hexo server
-
 More info: Server
 Generate static files1$ hexo generate
-
 More info: Generating
 Deploy to remote sites1$ hexo deploy
-
 More info: Deployment
 </div>
         </div>
@@ -194,6 +190,7 @@ More info: Deployment
           <div class="index-text mb-1">2019-20201. Courses Overview
 
 
+
 Code
 Name
 Website
@@ -202,25 +199,30 @@ Evaluation
 
 
 
-&lt;!–
+
 2nd Semester
 
 
-–&gt;
+
+
 
 
 052498
 APPLIED_STATISTICS
-*Course Details  *BEEP *An introduction to statistical learning, with application to R  *MOOC
+Course Details  BEEP An introduction to statistical learning, with application to R  MOOC
 R,Slides,Lab Session
 [1]40% Team project(Evaluated  by  teachers  and students)[2]60% Written Test
 
 
+
 095972
 OPTIMIZATION
-*Course Details *http://home.deib.polimi.it/amaldi/OPT-18-19.shtml
+Course Details http://home.deib.polimi.it/amaldi/OPT-18-19.shtml
 AMPL,CPLEX,Matlab,Slides,Exercises,Exam(NO+DO)
-[1]written exam[2]computer laborato</div>
+[1]written exam[2]computer laboratory tests
+
+
+090</div>
         </div>
       </a>
 
@@ -424,5 +426,20 @@ AMPL,CPLEX,Matlab,Slides,Exercises,Exam(NO+DO)
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
