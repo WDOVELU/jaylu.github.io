@@ -1,545 +1,412 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icon.jpg">
+  <link rel="icon" type="image/png" href="/img/icon.jpg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>Hexo</title>
 
-<link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Jay Lu</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/pp.jpg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/03/01/2019-2020-PLAN/">
+        <p class="h4 index-header">2019-2020_PLAN</p>
+      </a>
+
+      <a href="/2020/03/01/2019-2020-PLAN/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">2019-20201. Courses Overview
+
+
+Code
+Name
+Website
+Course Materials
+Evaluation
+
+
+
+&lt;!–
+2nd Semester
+
+
+–&gt;
+
+
+052498
+APPLIED_STATISTICS
+*Course Details  *BEEP *An introduction to statistical learning, with application to R  *MOOC
+R,Slides,Lab Session
+[1]40% Team project(Evaluated  by  teachers  and students)[2]60% Written Test
+
+
+095972
+OPTIMIZATION
+*Course Details *http://home.deib.polimi.it/amaldi/OPT-18-19.shtml
+AMPL,CPLEX,Matlab,Slides,Exercises,Exam(NO+DO)
+[1]written exam[2]computer laborato</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-01&nbsp;&nbsp;
+        
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Study_Plan">Study_Plan</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/02/29/hello-world/">
+        <p class="h4 index-header">Hello World</p>
+      </a>
+
+      <a href="/2020/02/29/hello-world/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post1$ hexo new "My New Post"
+
+More info: Writing
+Run server1$ hexo server
+
+More info: Server
+Generate static files1$ hexo generate
+
+More info: Generating
+Deploy to remote sites1$ hexo deploy
+
+More info: Deployment
+</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-02-29&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  <!-- cnzz Analytics -->
+  
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://yoursite.com/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false
-  };
-</script>
-
-  <title>Hexo</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
-
-  </li>
-  </ul>
-
-</nav>
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content">
-            
-
-  <div class="posts-expand">
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/01/2019-2020-PLAN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/01/2019-2020-PLAN/" class="post-title-link" itemprop="url">2019-2020_PLAN</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-03-01 00:03:55 / Modified: 00:04:58" itemprop="dateCreated datePublished" datetime="2020-03-01T00:03:55+01:00">2020-03-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="2019-2020"><a href="#2019-2020" class="headerlink" title="2019-2020"></a>2019-2020</h1><h2 id="1-Courses-Overview"><a href="#1-Courses-Overview" class="headerlink" title="1. Courses Overview"></a>1. Courses Overview</h2><table>
-<thead>
-<tr>
-<th>Code</th>
-<th>Name</th>
-<th>Website</th>
-<th>Course Materials</th>
-<th>Evaluation</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&lt;!–</td>
-<td><strong><em>2nd Semester</em></strong></td>
-<td></td>
-<td></td>
-<td>–&gt;</td>
-</tr>
-<tr>
-<td>052498</td>
-<td>APPLIED_STATISTICS</td>
-<td>*<a href="https://www4.ceda.polimi.it/manifesti/manifesti/controller/ManifestoPublic.do?EVN_DETTAGLIO_RIGA_MANIFESTO=evento&aa=2019&k_cf=225&k_corso_la=487&k_indir=MST&codDescr=052498&lang=EN&semestre=2&anno_corso=1&idItemOfferta=142664&idRiga=242011" target="_blank" rel="noopener">Course Details</a> <br> *<a href="https://beep.metid.polimi.it/web/2019-20-applied-statistics-piercesare-secchi-classe-712724/attivita-online-e-avvisi#p_29" target="_blank" rel="noopener">BEEP</a><br> *<a href="http://faculty.marshall.usc.edu/gareth-james/ISL/" target="_blank" rel="noopener">An introduction to statistical learning, with application to R</a> <br> *<a href="https://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/" target="_blank" rel="noopener">MOOC</a></td>
-<td>R,Slides,<br>Lab Session</td>
-<td>[1]40% Team project(Evaluated  by  teachers  and students)<br>[2]60% Written Test</td>
-</tr>
-<tr>
-<td>095972</td>
-<td>OPTIMIZATION</td>
-<td>*<a href="https://www4.ceda.polimi.it/manifesti/manifesti/controller/ManifestoPublic.do?EVN_DETTAGLIO_RIGA_MANIFESTO=evento&aa=2019&k_cf=225&k_corso_la=487&k_indir=MST&codDescr=095972&lang=EN&semestre=2&idGruppo=3902&idRiga=238956" target="_blank" rel="noopener">Course Details</a><br> *<a href="http://home.deib.polimi.it/amaldi/OPT-18-19.shtml" target="_blank" rel="noopener">http://home.deib.polimi.it/amaldi/OPT-18-19.shtml</a></td>
-<td>AMPL,CPLEX,Matlab,<br>Slides,Exercises,Exam(NO+DO)</td>
-<td>[1]written exam<br>[2]computer laboratory tests</td>
-</tr>
-<tr>
-<td>090958</td>
-<td>COMPUTER_GRAPHICS</td>
-<td>*<a href="https://www4.ceda.polimi.it/manifesti/manifesti/controller/ManifestoPublic.do?EVN_DETTAGLIO_RIGA_MANIFESTO=evento&k_corso_la=495&k_indir=GEC&idItemOfferta=143231&idGruppo=3994&idRiga=242912&codDescr=090958&semestre=2&aa=2019&lang=EN&jaf_currentWFID=main" target="_blank" rel="noopener">Course Details</a></td>
-<td>OpenGL API, Textbook,<br> Slides(but not find)</td>
-<td>[1]Project<br>[2]Assignments given during the lessons</td>
-</tr>
-<tr>
-<td>089013</td>
-<td>ROBOTICS</td>
-<td>*<a href="https://www4.ceda.polimi.it/manifesti/manifesti/controller/ManifestoPublic.do?EVN_DETTAGLIO_RIGA_MANIFESTO=evento&k_corso_la=481&k_indir=T2A&idItemOfferta=142334&idGruppo=3925&idRiga=239670&codDescr=089013&semestre=2&aa=2019&lang=EN&jaf_currentWFID=main" target="_blank" rel="noopener">Course Details</a><br> *<a href="http://chrome.ws.dei.polimi.it/index.php?title=Robotics" target="_blank" rel="noopener">Matt’s Home Page</a></td>
-<td>ROS,Slides<br> <a href="http://www.probabilistic-robotics.org/" target="_blank" rel="noopener">Probabilistic Robotics</a></td>
-<td>[1]27/32 written test <br> [2]5/32 home project</td>
-</tr>
-<tr>
-<td>&lt;!–</td>
-<td><strong><em>1st Semester</em></strong></td>
-<td></td>
-<td></td>
-<td>–&gt;</td>
-</tr>
-<tr>
-<td>052496</td>
-<td>ALGORITHMS AND PARALLEL COMPUTING</td>
-<td>*<a href="https://www11.ceda.polimi.it/schedaincarico/schedaincarico/controller/scheda_pubblica/SchedaPublic.do?&evn_default=evento&c_classe=712420&polij_device_category=DESKTOP&__pj0=0&__pj1=e3110263429e5c7f7ec0583c7f778489" target="_blank" rel="noopener">Course Details</a><br> *<a href="https://apc201920.wordpress.com/" target="_blank" rel="noopener">APC web epsilonmachina1920</a></td>
-<td>MPI,Slides,C++ primer 5th,Exercise note</td>
-<td>[1]written test<br>[2]project(if &gt;=27)</td>
-</tr>
-<tr>
-<td>095958</td>
-<td>REAL AND FUNCTIONAL ANALYSIS</td>
-<td>*<a href="https://www11.ceda.polimi.it/schedaincarico/schedaincarico/controller/scheda_pubblica/SchedaPublic.do?&evn_default=evento&c_classe=711749&polij_device_category=DESKTOP&__pj0=0&__pj1=354c6f3b5bc0ad4389445fbf5475b37a" target="_blank" rel="noopener">Course Details</a></td>
-<td>Course notes,Exam papers</td>
-<td>[1]written test<br>[2]oral test(if [17,18):mandatory)</td>
-</tr>
-<tr>
-<td>095966</td>
-<td>STOCHASTIC DYNAMICAL MODELS</td>
-<td>*<a href="https://www11.ceda.polimi.it/schedaincarico/schedaincarico/controller/scheda_pubblica/SchedaPublic.do?&evn_default=evento&c_classe=716639&polij_device_category=DESKTOP&__pj0=0&__pj1=c9444ec33aeebbfd9f765a278ce237fc" target="_blank" rel="noopener">Course Details</a></td>
-<td>Course notes,Exam papers</td>
-<td>[1]written test<br>[2]Mandatory oral test</td>
-</tr>
-<tr>
-<td>095978</td>
-<td>AUDIO AND VIDEO SIGNALS</td>
-<td>*<a href="https://www4.ceda.polimi.it/manifesti/manifesti/controller/ManifestoPublic.do?EVN_DETTAGLIO_RIGA_MANIFESTO=evento&aa=2019&k_cf=225&k_corso_la=487&k_indir=MST&codDescr=095978&lang=IT&semestre=1&idGruppo=3902&idRiga=238958" target="_blank" rel="noopener">Course Details</a><br> *<a href="https://beep.metid.polimi.it/user/jiajie.lu/home?p_p_id=84&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-2&p_p_col_count=1&_84_struts_action=%2Fannouncements%2Fview&_84_tabs1=entries&_84_delta1=10&_84_keywords=&_84_advancedSearch=false&_84_andOperator=true&_84_resetCur=false&cur1=1#p_84" target="_blank" rel="noopener">Beep</a> <br> *<a href="http://marconlab.deib.polimi.it/" target="_blank" rel="noopener">Prof. Marcon’s lab</a> *<a href="https://www.deib.polimi.it/ita/linee-di-ricerca/lista-personale/101" target="_blank" rel="noopener">DEIB</a></td>
-<td>Course notes,Exam papers</td>
-<td>[1]written test<br>[2]Mandatory oral test</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="2-英语口语练习-–-打卡"><a href="#2-英语口语练习-–-打卡" class="headerlink" title="2.英语口语练习 – 打卡"></a>2.英语口语练习 – 打卡</h2><h3 id="2-1-Echo-Method"><a href="#2-1-Echo-Method" class="headerlink" title="2.1 Echo Method"></a>2.1 Echo Method</h3><p>回音法介绍<a href="https://zhuanlan.zhihu.com/p/31760454" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31760454</a><br>1.把整段影片扫过一次<br>2.熟读文字档<br>3.仔细听一段话：播放5个字以内的一段话，专心的听。留意发音、语调、重音，并配合文字档听懂意思。<br>4.在心里重复“回音”：把刚刚听到的那段话，在心里 replay一次。<br>5.模仿“回音”，念出来<br>6.重复步骤4-6直到你可以自然说出那段话<br>7.迈入下一段话  </p>
-<p>在<a href="https://www.lingorank.com/" target="_blank" rel="noopener">https://www.lingorank.com/</a>上寻找合适难度及内容的材料。 <br>  在<a href="https://www.ted.com/" target="_blank" rel="noopener">https://www.ted.com/</a>上找到对应的视频和文档练习  </p>
-<ul>
-<li><input disabled="" type="checkbox"> <p>Monday  </p>
-</li>
-<li><input disabled="" type="checkbox"> <p>Tuesday</p>
-</li>
-<li><input disabled="" type="checkbox"> <p>Wednesday</p>
-</li>
-<li><input disabled="" type="checkbox"> <p>Thursday</p>
-</li>
-<li><input disabled="" type="checkbox"> <p>Friday</p>
-</li>
-<li><input disabled="" type="checkbox"> <p>Saturday</p>
-</li>
-<li><input disabled="" type="checkbox"> <p>Sunday</p>
-<h3 id="2-2-Youtube-Teacher-Mike-麦克老师"><a href="#2-2-Youtube-Teacher-Mike-麦克老师" class="headerlink" title="2.2 Youtube:Teacher Mike 麦克老师"></a>2.2 Youtube:Teacher Mike 麦克老师</h3><p>List1: <a href="https://www.youtube.com/watch?v=GcoH9ATXwe8&list=PLNXW1mx0qgEel9jh9p2NxEmsECYjBwgXr&index=1" target="_blank" rel="noopener">从零开始学英语系列</a></p>
-</li>
-<li><input disabled="" type="checkbox"> <p>7:15【从零开始】第一期：学英语，从入门到摔门！ <br></p>
-</li>
-<li><input disabled="" type="checkbox"> <p>5:18【从零开始】第二期：学会这些英语单词就可以走遍天下!  <br></p>
-</li>
-<li><input disabled="" type="checkbox"> <p>5:57【从零开始】第三期：和美国记者谈笑风生！最常用英语句型大放送！ <br></p>
-</li>
-<li><input disabled="" type="checkbox"> <p>5:33【从零开始】第四期：克服10个坏习惯，英语满分不是梦！  <br></p>
-</li>
-<li><input disabled="" type="checkbox"> <p>5:54【从零开始】第五期：5分钟搞定Have Has Had！ <br></p>
-</li>
-<li><input disabled="" type="checkbox"> <p>6:49【从零开始】第六期：只要30句，和歪果仁无障碍交流！ <br></p>
-</li>
-<li><input disabled="" type="checkbox"> <p>8:50【精华版】零基础入门学英语，看完这个，让你事半功倍！</p>
-</li>
-<li><input disabled="" type="checkbox"> <p>11:22【从零开始】你所见过最全面的数字英语，从零到亿，从数字到数学</p>
-</li>
-<li><input disabled="" type="checkbox"> <p>43:03【从零开始】掌握这625个单词，让你的英语水平突飞猛进</p>
-</li>
-<li><input checked="" disabled="" type="checkbox"> <p>7:20  为什么不该让谷歌进入中国</p>
-</li>
-<li><input disabled="" type="checkbox"> <p>35:54【从零开始】175个最实用英语会话句型 </p>
-</li>
-<li><input disabled="" type="checkbox"> <p>36:32【从零开始】250句必备的旅游英语</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/29/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/29/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-02-29 23:49:36" itemprop="dateCreated datePublished" datetime="2020-02-29T23:49:36+01:00">2020-02-29</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-  </div>
-
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "What doesn't kill you makes you stronger.&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
     });
-  }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
-</div>
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
-  </div>
-
-        
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
 
 
 
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
 
 
 
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
@@ -551,13 +418,6 @@
 
 
 
-
-
-
-
-  
-
-  
 
 </body>
 </html>
