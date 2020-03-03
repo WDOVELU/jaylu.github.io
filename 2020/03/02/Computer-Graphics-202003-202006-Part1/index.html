@@ -234,8 +234,9 @@
 <li>It’s a Cartesian coordinate system, where x and y values range between two canonical values (generally between -1 and 1, but other standards such as 0 and 1 also exists). </li>
 <li><script type="math/tex; mode=display">x_s = ( s_w - 1 ) * ( x_n + 1 ) / 2;~~~~ y_s = ( s_h - 1 ) * ( 1 - y_n ) / 2</script><p>  &emsp;where $(x_n,y_n)$ is Normalized Screen Coordinates,&emsp;$(x_s,y_s)$ is Pixel Coordinates,&emsp;$(s_w,s_h)$ is resolution of display device.</p>
 </li>
-<li><p><font color="red">Notice:</font><br>  Pixel coordinates(3×3) -&gt;  Normalized Screen Coordinates  -&gt;  Pixel coordinates(5×5)  <br><br>$\left( \begin{array}{ccc}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6 \\<br>7 &amp; 8 &amp; 9<br>\end{array}\right)$ -&gt;<br>$\left( \begin{array}{ccc}<br>1 &amp; 4 &amp; 7 \\<br>2 &amp; 5 &amp; 8 \\<br>3 &amp; 6 &amp; 9<br>\end{array}\right)$ -&gt;$\left( \begin{array}{ccc}<br>1 &amp; 0 &amp;2&amp;0 &amp; 3 \\<br>0 &amp; 0 &amp;0&amp;0 &amp; 0 \\<br>4 &amp; 0 &amp;5&amp;0 &amp; 6 \\<br>0 &amp; 0 &amp;0&amp;0 &amp; 0 \\<br>7 &amp; 0 &amp;8 &amp;0 &amp; 9<br>\end{array}\right)$</p>
+<li><p><strong><font color="blue">Example:</font></strong><br>  Pixel coordinates(3×3) -&gt;  Normalized Screen Coordinates  -&gt;  Pixel coordinates(5×5)  <br><br>$\left( \begin{array}{ccc}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6 \\<br>7 &amp; 8 &amp; 9<br>\end{array}\right)$ -&gt;<br>$\left( \begin{array}{ccc}<br>1 &amp; 4 &amp; 7 \\<br>2 &amp; 5 &amp; 8 \\<br>3 &amp; 6 &amp; 9<br>\end{array}\right)$ -&gt;$\left( \begin{array}{ccc}<br>1 &amp; 0 &amp;2&amp;0 &amp; 3 \\<br>0 &amp; 0 &amp;0&amp;0 &amp; 0 \\<br>4 &amp; 0 &amp;5&amp;0 &amp; 6 \\<br>0 &amp; 0 &amp;0&amp;0 &amp; 0 \\<br>7 &amp; 0 &amp;8 &amp;0 &amp; 9<br>\end{array}\right)$</p>
 </li>
+<li><strong><font color="red">Notice:</font> we still have problem of image cutting when aspect ratio is different.</strong></li>
 </ul>
 </li>
 <li><p>Points,Lines,Triangles </p>
@@ -249,6 +250,9 @@
 <p><font color="red"><strong>Press “3” to show Yin-Yang. Press “2” to show circle. Press “1” to show car.</strong></font></p>
 <p> <div style =" width：100％; height：500px; border：none; text-align：center"><iframe allowtransparency =" yes" frameborder =" 0" width =" 500" height =" 520" src ="/CGhtml/A01/index.html" /> </iframe></div> 
 </p>
+
+
+
 
 </li>
 </ul>
