@@ -8,14 +8,15 @@ var canvas;
 var gl = null;
 
 var vU = [];
-var stl1, stl2, stl3, stl4, stl5;
-var show2 = false;
+var vM= [];
+var stl1, stl2, stl3, stl4, stl5, stl6;
+var show2 = 51;
 var program = null;
 
 var keyFunction =function(e) {
-	if (e.keyCode == 32) {	// Space
-		show2 = !show2;
-	}	
+	// if (e.keyCode == 32) {	// Space
+		show2 = e.keyCode;
+	// }	
 }
 //'window' is a JavaScript object (if "canvas", it will not work)
 window.addEventListener("keyup", keyFunction, false);
@@ -42,7 +43,7 @@ function main(){
 						  0, 1];
 		j = stl1 = vertices.length;
 		
-		for(i=1; i<10; i++) {
+		for(i=1; i<10; i++) {   // draw the grid
 			// Horizontal lines
 			vertices[j++] = -1; 
 			vertices[j++] = i*0.1;
@@ -75,22 +76,31 @@ function main(){
 						 -0.2,  0.1,
 						 -0.5,  0.0]
 		);
-		stl3 = vertices.length;
+		stl3 = vertices.length; 
 		
 		draw();
 		vertices = vertices.concat(vU);
 		stl4 = vertices.length;
 
 		vU = [];
-		draw2();
+		drawyinyang();
 		vertices = vertices.concat(vU);
 		stl5 = vertices.length;
-		
-						 
+
+		vU = [];
+		draw2(0,0,0.8,1,0);
+		vertices = vertices.concat(vU);
+		stl6 = vertices.length;
+		vM = vM.concat(vertices);
+				 
 		var VBO = gl.createBuffer();
 		gl.bindBuffer(gl.ARRAY_BUFFER, VBO);
 		gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+		// gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 		
+
+
+
 // Vertex shader
 			var vs = `#version 300 es
 #define POSITION_LOCATION 0
@@ -138,22 +148,26 @@ void main() {
 	}
 }
 
+
+
 function drawScene() {
 	var pColorLocation = gl.getUniformLocation(program, 'pColor');
 	gl.uniform4f(pColorLocation, 0.2, 0.2, 0.2, 1.0);
 	gl.drawArrays(gl.LINES, 0, stl1/2);
 	gl.uniform4f(pColorLocation, 0.8, 0.8, 0.8, 1.0);
 	gl.drawArrays(gl.LINES, stl1/2, (stl2-stl1)/2);
-
-	if(!show2) {
+	if(show2 ==49) {
 		gl.uniform4f(pColorLocation, 0.0, 0.0, 0.8, 1.0);
 		gl.drawArrays(gl.LINE_LOOP, stl2/2, (stl3-stl2)/2);
 		gl.drawArrays(gl.POINTS, stl2/2, (stl3-stl2)/2);
 		gl.uniform4f(pColorLocation, 0.8, 0.0, 0.0, 1.0);
 		gl.drawArrays(gl.LINES, stl3/2, (stl4-stl3)/2);
-	} else {
+	} else if(show2 == 51){
 		gl.uniform4f(pColorLocation, 0.0, 0.8, 0.0, 1.0);
-		gl.drawArrays(gl.LINES, stl4/2, (stl5-stl4)/2);
+		gl.drawArrays(gl.LINES, stl4/2, (stl5-stl4)/2); //why devide 2？ A coordinate is consist of 2 numbers in array.
+	}else if(show2 == 50){
+		gl.uniform4f(pColorLocation, 0.8, 0, 0.0, 1.0);
+		gl.drawArrays(gl.LINES, stl5/2, (stl6-stl5)/2);
 	}
 		
 	window.requestAnimationFrame(drawScene);		
@@ -163,10 +177,10 @@ function drawScene() {
 	</head>
 	
 	<body style="background-color: grey;" onLoad="main();">
-		<canvas id="my-canvas" width='500' height='500' style="background-color: white;">
+		<canvas id="my-canvas" width='450' height='450' style="background-color: white;">
 			Your browser doesn't support the Canvas Element!
 		</canvas>
-		<center>Press Space to swap between <i>draw()</i> and <i>draw2()</i>.</center>
+		<center>Press "3" to show Yin-Yang. Press "2" to show circle. Press "1" to show car.</center>
 	</body>
 
 </html>
