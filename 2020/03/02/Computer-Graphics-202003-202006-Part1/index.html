@@ -223,8 +223,7 @@
 <li><p>Pixel coordinates(hardware coordinates)</p>
 <ul>
 <li>Note that the coordinate system is left-handed, since it has the y-axis in the opposite direction compared to the classical one.</li>
-<li><font color="blue">$0 <= x <= s_w -1~~~~~~~0 <= y <= s_h -1$ </font> 
-</li>
+<li><script type="math/tex; mode=display">0 <= x <= s_w-1~~~~~~~0 <= y <= s_h -1</script></li>
 </ul>
 </li>
 <li><p>Clipping</p>
@@ -232,11 +231,11 @@
 <li><p><strong><font color="red">Normalized Screen Coordinates</font></strong> &emsp;&emsp; (102:00 未解决的问题 cut ??)</p>
 <ul>
 <li>Goal: Applications want to display the same image regardless of the resolution and the size of the screen. They also want to exploit all the features of the display at their best. </li>
-<li><p>It’s a Cartesian coordinate system, where x and y values range between two canonical values (generally between -1 and 1, but other standards such as 0 and 1 also exists).</p>
+<li>It’s a Cartesian coordinate system, where x and y values range between two canonical values (generally between -1 and 1, but other standards such as 0 and 1 also exists). </li>
+<li><script type="math/tex; mode=display">x_s = ( s_w - 1 ) * ( x_n + 1 ) / 2;~~~~ y_s = ( s_h - 1 ) * ( 1 - y_n ) / 2</script><p>  &emsp;where $(x_n,y_n)$ is Normalized Screen Coordinates,&emsp;$(x_s,y_s)$ is Pixel Coordinates,&emsp;$(s_w,s_h)$ is resolution of display device.</p>
 </li>
-<li><p><font color="blue"> $x_s = (s_w -1) <em> (x_n + 1) / 2 ; <del>~</del>~ y_s = (s_h -1) </em> (1 - y_n )/2$</font> <br><br>$(x_n,y_n)$ is Normalized Screen Coordinates,&emsp;$(x_s,y_s)$ is Pixel Coordinates,&emsp;$(s_w,s_h)$ is resolution of display device.</p>
+<li><p><font color="red">Notice:</font><br>  Pixel coordinates(3×3) -&gt;  Normalized Screen Coordinates  -&gt;  Pixel coordinates(5×5)  <br><br>$\left( \begin{array}{ccc}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6 \\<br>7 &amp; 8 &amp; 9<br>\end{array}\right)$ -&gt;<br>$\left( \begin{array}{ccc}<br>1 &amp; 4 &amp; 7 \\<br>2 &amp; 5 &amp; 8 \\<br>3 &amp; 6 &amp; 9<br>\end{array}\right)$ -&gt;$\left( \begin{array}{ccc}<br>1 &amp; 0 &amp;2&amp;0 &amp; 3 \\<br>0 &amp; 0 &amp;0&amp;0 &amp; 0 \\<br>4 &amp; 0 &amp;5&amp;0 &amp; 6 \\<br>0 &amp; 0 &amp;0&amp;0 &amp; 0 \\<br>7 &amp; 0 &amp;8 &amp;0 &amp; 9<br>\end{array}\right)$</p>
 </li>
-<li><font color="red">Notice:</font><br>  Pixel coordinates(3×3) -&gt;  Normalized Screen Coordinates  -&gt;  Pixel coordinates(5×5)  <br><br>$\left( \begin{array}{ccc}<br>1 &amp; 2 &amp; 3 \\<br>4 &amp; 5 &amp; 6 \\<br>7 &amp; 8 &amp; 9<br>\end{array}\right)$ -&gt;<br>$\left( \begin{array}{ccc}<br>1 &amp; 4 &amp; 7 \\<br>2 &amp; 5 &amp; 8 \\<br>3 &amp; 6 &amp; 9<br>\end{array}\right)$ -&gt;$\left( \begin{array}{ccc}<br>1 &amp; 0 &amp;2&amp;0 &amp; 3 \\<br>0 &amp; 0 &amp;0&amp;0 &amp; 0 \\<br>4 &amp; 0 &amp;5&amp;0 &amp; 6 \\<br>0 &amp; 0 &amp;0&amp;0 &amp; 0 \\<br>7 &amp; 0 &amp;8 &amp;0 &amp; 9<br>\end{array}\right)$</li>
 </ul>
 </li>
 <li><p>Points,Lines,Triangles </p>
