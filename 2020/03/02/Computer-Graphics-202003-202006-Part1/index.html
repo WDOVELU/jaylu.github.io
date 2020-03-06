@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    249 字
+                    427 字
                   </span>&nbsp;
                 
 
@@ -138,7 +138,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      2 分钟
                   </span>&nbsp;
                 
 
@@ -196,14 +196,15 @@
 <li>Have a special memory, called Video Memory (VRAM).</li>
 </ul>
 </li>
-<li><p>Accelerated graphic adapters</p>
+<li><p>Accelerated(加速) graphic adapters</p>
 <ul>
 <li>special types of raster graphic adapters that have much more memory than the one required to store a single screenshot. </li>
 </ul>
 </li>
 </ul>
 <h2 id="Color-vision"><a href="#Color-vision" class="headerlink" title="Color vision"></a>Color vision</h2><ol>
-<li></li>
+<li><p>颜色与波长</p>
+</li>
 <li><p>人眼对颜色的感知</p>
 <ul>
 <li>cones (sometimes called ρ-red, β-green, γ-blue)</li>
@@ -213,10 +214,10 @@
 <li>Color composition </li>
 <li>Color range</li>
 <li>Color synthesis </li>
-<li>Color quantization</li>
-<li>Image resolution </li>
-<li>Display resolution</li>
-<li>Pixel aspect ratio </li>
+<li>Color <strong>quantization</strong></li>
+<li><strong>Image resolution</strong></li>
+<li><strong>Display resolution</strong></li>
+<li><strong>Pixel aspect ratio</strong></li>
 </ol>
 <h2 id="2D-graphics-primitives"><a href="#2D-graphics-primitives" class="headerlink" title="2D graphics primitives"></a>2D graphics primitives</h2><ol>
 <li>2D Graphics Primitives - coordinates system</li>
@@ -226,7 +227,7 @@
 <li><script type="math/tex; mode=display">0 <= x <= s_w-1~~~~~~~0 <= y <= s_h -1</script></li>
 </ul>
 </li>
-<li><p>Clipping</p>
+<li><p><strong>Clipping</strong></p>
 </li>
 <li><p><strong><font color="red">Normalized Screen Coordinates</font></strong> &emsp;&emsp; (102:00 未解决的问题 cut ??)</p>
 <ul>
@@ -241,6 +242,9 @@
 </li>
 <li><p>Points,Lines,Triangles </p>
 </li>
+<li><p><strong>Interpolation</strong>:<br>liner interpolation </p>
+<script type="math/tex; mode=display">I(x_0 , x, x_1 , y_0 , y_1 ) = y_0 + (x − x0 )\frac{y_1 − y_0 }{x_1 − x_0}</script><p>Equally spaced interpolation </p>
+<script type="math/tex; mode=display">y_i = I(0,i,N,y_0,y_N)</script><script type="math/tex; mode=display">y_i = y_0+\frac{y_N-y_0}{N}i</script></li>
 </ol>
 <h2 id="Assignment01-Paint-by-numbers"><a href="#Assignment01-Paint-by-numbers" class="headerlink" title="Assignment01 Paint by numbers"></a>Assignment01 Paint by numbers</h2><ul>
 <li>Q1: match the blue house with red lines and correct the code in function draw() of file draw.js.</li>
@@ -251,10 +255,118 @@
 <p> <div style =" width：100％; height：500px; border：none; text-align：center"><iframe allowtransparency =" yes" frameborder =" 0" width =" 500" height =" 520" src ="/CGhtml/A01/index.html" /> </iframe></div> 
 </p>
 
-
-
-
 </li>
+</ul>
+<h1 id="Lecture1-3D-coordinates-and-basic-transforms"><a href="#Lecture1-3D-coordinates-and-basic-transforms" class="headerlink" title="Lecture1 3D coordinates and basic transforms"></a>Lecture1 3D coordinates and basic transforms</h1><h2 id="Homogeneous-coordinates-齐次坐标"><a href="#Homogeneous-coordinates-齐次坐标" class="headerlink" title="Homogeneous coordinates (齐次坐标)"></a>Homogeneous coordinates (齐次坐标)</h2><script type="math/tex; mode=display">p=(x,y,z,w)</script><p>where $w$ defines a scale: the units of measure used by the coordinates.</p>
+<h2 id="Homogeneous-Transformations-Matrix-齐次变换矩阵"><a href="#Homogeneous-Transformations-Matrix-齐次变换矩阵" class="headerlink" title="Homogeneous Transformations Matrix (齐次变换矩阵)"></a>Homogeneous Transformations Matrix (齐次变换矩阵)</h2><script type="math/tex; mode=display">M=\left[\begin{array}{ccc} 
+    R & d \\
+    0 & 1 
+\end{array}\right]=\left[\begin{array}{ccc}
+n_x & s_x & a_x & d_x \\
+n_y & s_y & a_y & d_y \\
+n_z & s_z & a_z & d_z \\
+0 &0 & 0 &1 \\
+\end{array}\right]</script><p>where  $R$ is used to do the rotation and $d$ is used to do the displacement.</p>
+<script type="math/tex; mode=display">p=(x,y,z,1)~~~p\prime=(M*p^T)^T~~~p\prime= (x\prime,y\prime,z\prime,1)</script><script type="math/tex; mode=display">p=(x,y,z,1)~~~p\prime=p*M^T~~~~~~~p\prime= (x\prime,y\prime,z\prime,1)</script><h2 id="Affine-transforms-（仿射变换）"><a href="#Affine-transforms-（仿射变换）" class="headerlink" title="Affine transforms （仿射变换）"></a>Affine transforms （仿射变换）</h2><p>The affine transforms are usually grouped in four classes: </p>
+<ol>
+<li><p><strong>Translation</strong></p>
+<script type="math/tex; mode=display">\left(\begin{array}{ccc} 
+ x^\prime=x+d_x\\
+ y^\prime=y+d_y\\
+ z^\prime=z+d_z\\
+\end{array}\right)~~~->~~~T(d_x,d_y,d_z)=\left[\begin{array}{ccc}
+1 & 0 & 0 & d_x \\
+0 & 1 & 0 & d_y \\
+0 & 0 & 1 & d_z \\
+0 &0 & 0 &1 \\
+\end{array}\right]</script></li>
+<li><p><strong>Scaling</strong><br>Modifies the <strong>size</strong>, while maintaining constant its <strong>position</strong> and its <strong>orientation</strong>.<br>Effects: </p>
+</li>
+</ol>
+<ul>
+<li>Enlarge &amp; Shrink(缩小) &amp; Deform(变形) </li>
+</ul>
+<script type="math/tex; mode=display">\left(\begin{array}{ccc} 
+    x^\prime=s_x*x\\
+    y^\prime=s_y*y\\
+    z^\prime=s_z*z\\
+\end{array}\right)~~~->~~~T(s_x,s_y,s_z)=\left[\begin{array}{ccc}
+s_x & 0 & 0 & 0 \\
+0 & s_y & 0 & 0 \\
+0 & 0 & s_z & 0 \\
+0 &0 & 0 &1 \\
+\end{array}\right]</script><blockquote>
+<p>Can we achieve this by just adjusting the “w” value? Yes,but it will have some problems about subsequent transformations such as doing perspective transformation</p>
+</blockquote>
+<ul>
+<li>Mirror<blockquote>
+<p>Mirroring can be obtained by using negative scaling factors.<br><br><strong>Planar</strong> mirroring:&emsp; Assigning -1 to the scaling factor of the axis perpendicular(垂直) to the plane (x for plane yz: s_x=-1). <br><br><strong>Axial</strong> mirroring: &emsp; x and z for y-axis: $s_x=-1,s_y=-1$. <br><br><strong>Central</strong> mirroring: &emsp; $s_x=s_y=s_z=-1$. </p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>Flatten(展平)<blockquote>
+<p>A scaling factor of 0 in any direction, flattens the image along that axis. This however makes the transform matrix not <strong><font color="red">invertible(不可逆)</font></strong>, a feature that might require special handling. </p>
+</blockquote>
+</li>
+</ul>
+<ol>
+<li><strong>Rotation</strong> <blockquote>
+<p>Varies the orientation of an object, leaving its position and size unchanged.</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>X-axis<script type="math/tex; mode=display">\left(\begin{array}{ccc} 
+  x^\prime=x\\
+  y^\prime=y*cos\alpha-z*sin\alpha\\
+  z^\prime=y*sin\alpha+z*cos\alpha\\
+\end{array}\right)~~~->~~~T(\alpha)=\left[\begin{array}{ccc}
+1 & 0 & 0 & 0 \\
+0 & cos\alpha & -sin\alpha & 0 \\
+0 & sin\alpha & cos\alpha & 0 \\
+0 &0 & 0 &1 \\
+\end{array}\right]</script></li>
+<li>Y-axis<script type="math/tex; mode=display">\left(\begin{array}{ccc} 
+  x^\prime=x*sin\alpha+z*cos\alpha\\
+  y^\prime=y\\
+  z^\prime=-x*sin\alpha+z*cos\alpha\\
+\end{array}\right)~~~->~~~T(\alpha)=\left[\begin{array}{ccc}
+cos\alpha & 0 & sin\alpha & 0 \\
+0 & 1 & 0 & 0 \\
+-sin\alpha & 0 & cos\alpha & 0 \\
+0 &0 & 0 &1 \\
+\end{array}\right]</script></li>
+<li>Z-axis<script type="math/tex; mode=display">\left(\begin{array}{ccc} 
+  x^\prime=x*cos\alpha-y*sin\alpha\\
+  y^\prime=x*sin\alpha+y*cos\alpha\\
+  z^\prime=z\\
+\end{array}\right)~~~->~~~T(\alpha)=\left[\begin{array}{ccc}
+cos\alpha & -sin\alpha & 0 & 0 \\
+sin\alpha & cos\alpha & 0& 0 \\
+0 & 0 & 1 & 0 \\
+0 &0 & 0 &1 \\
+\end{array}\right]</script></li>
+</ul>
+<ol>
+<li><strong>Shear</strong> (Take the y-axis as an example)<blockquote>
+<p>As the value of y-axis increases, the object is linearly bent into a direction specified by a vector (in this case defined by two values: hx and hz ).</p>
+<div  align="center">    
+<img src="/CGhtml/pic/f1shear.jpg" srcset="/img/loading.gif" width = "150" height = "150" alt="shear" align=center />
+</div></blockquote>
+</li>
+</ol>
+<ul>
+<li>Y-axis<script type="math/tex; mode=display">\left(\begin{array}{ccc} 
+  x^\prime=x+y*h_x\\
+  y^\prime=y\\
+  z^\prime=z+y*h_z\\
+\end{array}\right)~~~->~~~T(h_x,h_z)=\left[\begin{array}{ccc}
+1 & h_x & 0 &0 \\
+0 & 1 & 0 & 0 \\
+0 & h_z & 1 & 0 \\
+0 &0 & 0 &1 \\
+\end{array}\right]</script></li>
 </ul>
 
             <hr>
@@ -276,6 +388,8 @@
                 <i class="iconfont icon-tag"></i>
                 
                   <a class="hover-with-bg" href="/tags/Computer%20Graphics">Computer Graphics</a>
+                
+                  <a class="hover-with-bg" href="/tags/OPENGL">OPENGL</a>
                 
               </span>
             
