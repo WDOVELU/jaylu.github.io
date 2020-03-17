@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Robotics 202003-202006 Part1 ~ Hexo</title>
+  <title>Applied Statistics Project ~ Hexo</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -121,7 +121,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  Wednesday, March 4th 2020, 12:23 pm
+                  Sunday, March 15th 2020, 3:32 pm
                 </p>
               
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    558 字
+                    0 字
                   </span>&nbsp;
                 
 
@@ -138,7 +138,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      1 分钟
                   </span>&nbsp;
                 
 
@@ -171,113 +171,7 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="0-Course-Overview"><a href="#0-Course-Overview" class="headerlink" title="0 Course Overview"></a>0 Course Overview</h1><h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><p> Learning how to design and implement the software which makes autonomous an autonomous mobile robot (e.g., symbolic planning, trajectory planning, localization, perception, mapping, etc.)</p>
-<h2 id="Material"><a href="#Material" class="headerlink" title="Material"></a>Material</h2><ul>
-<li>Teacher’s <a href="http://chrome.ws.dei.polimi.it/index.php?title=Robotics" target="_blank" rel="noopener">slides</a>.</li>
-<li>ROS <a href="http://wiki.ros.org/melodic/Installation" target="_blank" rel="noopener">http://wiki.ros.org/melodic/Installation</a></li>
-<li>Slack group for the project</li>
-<li>Probabilistic Robotics, Editore: MIT Press, Anno edizione: 2005, ISBN: 978-0262201629 <a href="http://www.probabilistic-robotics.org/" target="_blank" rel="noopener">http://www.probabilistic-robotics.org/</a></li>
-</ul>
-<h2 id="Course-Evaluation"><a href="#Course-Evaluation" class="headerlink" title="Course Evaluation"></a>Course Evaluation</h2><ul>
-<li>A written examination covering the whole program graded up to 27/32.</li>
-<li>A home project(can be replaced by a lab project) in simulation practicing the topics of the course graded up to 5/32.(2-3 people)</li>
-</ul>
-<h1 id="Lecture1-Introduction"><a href="#Lecture1-Introduction" class="headerlink" title="Lecture1: Introduction"></a>Lecture1: Introduction</h1><p>Robot History:</p>
-<ul>
-<li>Mechanical era (1700): • automata • karakuri-ningyo </li>
-<li>Fiction era (’20s): • Rossum Universal Robot </li>
-<li>Cybernetics era (‘40s): • Turtle and telerobot </li>
-<li>Automation era (from the ‘60s): • Industrial robots<br>Robot Categories:</li>
-<li>Industrial Robot</li>
-<li>Service Robot<ul>
-<li><ul>
-<li>personal service robot</li>
-</ul>
-</li>
-<li><ul>
-<li>professional service robot </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>Standards and definitions<br>ISO definitions: </p>
-<ul>
-<li>A robot system is a system comprising robot(s), end-effector(s) and any machinery, equipment, or sensors supporting the robot performing its task.</li>
-<li>According to the definition, “a degree of autonomy” is required for service robots ranging from partial autonomy (including human robot interaction) to full autonomy (without active human robot intervention). </li>
-<li>Manipulating industrial robots could also be regarded as service robots, provided they are installed in non-manufacturing operations.</li>
-<li>In some cases, service robots consist of a mobile platform on which one or several arms are attached and controlled in the same mode as the arms of industrial robot. Furthermore, contrary to their industrial counterparts, service robots do not have to be fully automatic or autonomous. In many cases these machines may even assist a human user or be tele-operated.</li>
-</ul>
-<p>What makes an autonomous robot?</p>
-<ul>
-<li>1 Sensor -&gt; sense</li>
-<li>2 Algorithms -&gt;plan</li>
-<li>3 Actuators -&gt; Act </li>
-</ul>
-<h1 id="Lecture2-Sensors-amp-Actuators-p1-0305"><a href="#Lecture2-Sensors-amp-Actuators-p1-0305" class="headerlink" title="Lecture2: Sensors &amp; Actuators -p1 0305"></a>Lecture2: Sensors &amp; Actuators -p1 0305</h1><ul>
-<li>Sensors</li>
-<li>Proprioceptive sensors</li>
-</ul>
-<ul>
-<li>Exterocemptive sensors</li>
-</ul>
-<ul>
-<li><p>Effectors modify the environment state • Match the robot task (e.g., wheels, legs, grippers)</p>
-</li>
-<li><p>Actuators enable effectors to act • E.g., passive actuation, motors of various types </p>
-</li>
-</ul>
-<h2 id="DC-Motors"><a href="#DC-Motors" class="headerlink" title="DC Motors"></a>DC Motors</h2><p><a href="https://www.youtube.com/watch?v=LAtPHANEfQo" target="_blank" rel="noopener">Understanding DC Brushed Motors</a><br><a href="https://www.youtube.com/watch?v=bCEiOnuODac" target="_blank" rel="noopener">Understanding DC Brushless Motors</a></p>
-<h3 id="Direct-Current-DC-motors"><a href="#Direct-Current-DC-motors" class="headerlink" title="Direct Current (DC) motors"></a>Direct Current (DC) motors</h3><ul>
-<li>Convert electrical energy into mechanical energy </li>
-<li>Small, cheap, reasonably efficient, easy to use<br>How it works？<a href="https://www.youtube.com/watch?v=LAtPHANEfQo" target="_blank" rel="noopener">youtube</a></li>
-</ul>
-<h3 id="Brushed-and-Brushless-Motors"><a href="#Brushed-and-Brushless-Motors" class="headerlink" title="Brushed and Brushless Motors"></a>Brushed and Brushless Motors</h3><p>两者优缺点总结：40-43min</p>
-<h3 id="Torque-in-a-DC-motor"><a href="#Torque-in-a-DC-motor" class="headerlink" title="Torque in a DC motor"></a><strong>Torque</strong> in a DC motor</h3><ul>
-<li>Torque</li>
-<li>Stall torque</li>
-</ul>
-<h3 id="Power-of-a-Motor"><a href="#Power-of-a-Motor" class="headerlink" title="Power of a Motor"></a><strong>Power</strong> of a Motor</h3><p>—- 55分前重听</p>
-<h3 id="Motor-Efficiency"><a href="#Motor-Efficiency" class="headerlink" title="Motor Efficiency "></a><strong>Motor Efficiency </strong></h3><p>Motor efficiency $ \eta = $</p>
-<p>DC motors are not perfectly efficient<br>• Due to friction energy is wasted as heat<br>• Industrial-grade motors (good quality) 90%<br>• Toy motors (cheap) 50%, Micro-motors for miniature robots &lt; 50% </p>
-<p>75分钟左右两个问题</p>
-<h3 id="Gearing-传动装置-齿轮"><a href="#Gearing-传动装置-齿轮" class="headerlink" title="Gearing(传动装置\齿轮)"></a><strong>Gearing</strong>(传动装置\齿轮)</h3><ul>
-<li>Rotational force generated at the center of a gear is equal to the gear’s radius times the force applied tangential at circumference.<script type="math/tex; mode=display">Torgue: ~~~~ T = F\times r</script></li>
-<li><ul>
-<li>Example:</li>
-</ul>
-</li>
-<li><p>Meshing gears:by combining gears with different ratios we can control the amount of force and torque generated.</p>
-</li>
-<li><p>Gearing Effect on Speed </p>
-</li>
-<li><p>Designing Gear Teeth </p>
-</li>
-<li>Gear Reduction in Series </li>
-</ul>
-<h1 id="Lecture2-Sensors-amp-Actuators-p2-0311"><a href="#Lecture2-Sensors-amp-Actuators-p2-0311" class="headerlink" title="Lecture2: Sensors &amp; Actuators -p2 0311"></a>Lecture2: Sensors &amp; Actuators -p2 0311</h1><h2 id="Stepper-motors"><a href="#Stepper-motors" class="headerlink" title="Stepper motors"></a>Stepper motors</h2><ul>
-<li>why it cannot be used in mobilephone? =&gt; 36:00</li>
-</ul>
-<h2 id="Servo-Motors"><a href="#Servo-Motors" class="headerlink" title="Servo Motors"></a>Servo Motors</h2><h2 id="Sensors"><a href="#Sensors" class="headerlink" title="Sensors"></a>Sensors</h2><p>RGB Camera</p>
-<p>Encoders</p>
-<ul>
-<li>Linear encoders<br>be used in CNC.</li>
-</ul>
-<ul>
-<li>Rotary enoders </li>
-<li><ul>
-<li>Incremental rotary encoders重要</li>
-</ul>
-</li>
-<li><ul>
-<li>Absolute rotary encoders </li>
-</ul>
-</li>
-</ul>
-<p>Sonars =&gt;90:00<br>human echolocation ted</p>
-<p>3D time-of-flight (TOF) cameras<br><a href="http://www.ti.com/lit/wp/sloa190b/sloa190b.pdf" target="_blank" rel="noopener">http://www.ti.com/lit/wp/sloa190b/sloa190b.pdf</a></p>
-<p>Lasers Range Finder</p>
-
+            
             <hr>
           </div>
           <br>
@@ -287,7 +181,7 @@
               <span>
                 <i class="iconfont icon-inbox"></i>
                 
-                  <a class="hover-with-bg" href="/categories/Robotics">Robotics</a>
+                  <a class="hover-with-bg" href="/categories/Applied%20Statistics">Applied Statistics</a>
                   &nbsp;
                 
               </span>&nbsp;&nbsp;
@@ -296,11 +190,9 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/Robotics">Robotics</a>
+                  <a class="hover-with-bg" href="/tags/Applied%20Statistics">Applied Statistics</a>
                 
-                  <a class="hover-with-bg" href="/tags/Slam">Slam</a>
-                
-                  <a class="hover-with-bg" href="/tags/ROS">ROS</a>
+                  <a class="hover-with-bg" href="/tags/Project">Project</a>
                 
               </span>
             
@@ -442,7 +334,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Robotics 202003-202006 Part1&nbsp;",
+        "Applied Statistics Project&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

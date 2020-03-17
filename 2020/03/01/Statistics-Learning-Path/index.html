@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    708 字
+                    1.4k 字
                   </span>&nbsp;
                 
 
@@ -138,7 +138,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      3 分钟
+                      6 分钟
                   </span>&nbsp;
                 
 
@@ -171,19 +171,113 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h1 id="0-Prerequisites：Probability-and-Inferential-Statistics"><a href="#0-Prerequisites：Probability-and-Inferential-Statistics" class="headerlink" title="0 Prerequisites：Probability and Inferential Statistics"></a>0 Prerequisites：Probability and Inferential Statistics</h1><h2 id="Course-MIT-Probabilistic-Systems-Analysis-and-Applied-Probability-概率分析及应用"><a href="#Course-MIT-Probabilistic-Systems-Analysis-and-Applied-Probability-概率分析及应用" class="headerlink" title="Course: MIT Probabilistic Systems Analysis and Applied Probability(概率分析及应用)"></a>Course: MIT Probabilistic Systems Analysis and Applied Probability(概率分析及应用)</h2><blockquote>
+            <h1 id="I-Prerequisites：Probability-and-Inferential-Statistics"><a href="#I-Prerequisites：Probability-and-Inferential-Statistics" class="headerlink" title="I Prerequisites：Probability and Inferential Statistics"></a>I Prerequisites：Probability and Inferential Statistics</h1><h2 id="1-Course-MIT-Probabilistic-Systems-Analysis-and-Applied-Probability-概率分析及应用"><a href="#1-Course-MIT-Probabilistic-Systems-Analysis-and-Applied-Probability-概率分析及应用" class="headerlink" title="1 Course: MIT Probabilistic Systems Analysis and Applied Probability(概率分析及应用)"></a>1 Course: MIT Probabilistic Systems Analysis and Applied Probability(概率分析及应用)</h2><blockquote>
 <p>01/03/2020 - 20/03/2020  </p>
 <blockquote>
-<p>Bilibili中字课程,not include seminar/tutoria：<a href="https://www.bilibili.com/video/av39034423?p=17" target="_blank" rel="noopener">https://www.bilibili.com/video/av39034423?p=17</a><br>Bilibili原版课程,including seminar/tutoria：<a href="https://www.bilibili.com/video/av39034423?p=17" target="_blank" rel="noopener">https://www.bilibili.com/video/av39034423?p=17</a></p>
+<p>Bilibili中字课程,not include seminar/tutoria：<a href="https://www.bilibili.com/video/av39034423?p=17" target="_blank" rel="noopener">https://www.bilibili.com/video/av39034423?p=17</a><br>Bilibili原版课程,including seminar/tutoria：<a href="https://www.bilibili.com/video/av39034423?p=17" target="_blank" rel="noopener">https://www.bilibili.com/video/av39034423?p=17</a> <br><br>以下大多内容根据自己需要整理自谭升的博客<a href="https://face2ai.com/math-probability-big-picture/" target="_blank" rel="noopener">https://face2ai.com/math-probability-big-picture/</a></p>
+<h3 id="1-1-Basic-Concept"><a href="#1-1-Basic-Concept" class="headerlink" title="1.1 Basic Concept"></a>1.1 Basic Concept</h3><p>试验 Experiments<br>An experiment is any process,real or hypothetical,in which the possible outcomes can be identified ahead of time.<br><br>real: 丢硬币，结果可能是正面，反面，或者立着<br><br>hypothetical: 有一个不能立起来的硬币</p>
 </blockquote>
 </blockquote>
-<h1 id="1-Applied-Statistics-2020-03-2020-06"><a href="#1-Applied-Statistics-2020-03-2020-06" class="headerlink" title="1 Applied Statistics 2020.03-2020.06"></a>1 Applied Statistics 2020.03-2020.06</h1><h2 id="1-1-Overview"><a href="#1-1-Overview" class="headerlink" title="1.1 Overview"></a>1.1 Overview</h2><p>1) 探索多元数据集：描述性统计数据和图形显示。多元样本的几何形状。广义方差。协方差矩阵导出的度量。<br>   Exploring a multivariate dataset: descriptive statistics and graphical displays. The geometry of a multivariate sample. Generalized Variance. The metric induced by the covariance matrix.</p>
+<p>样本空间 Sample Space</p>
+<blockquote>
+<p>The collection of all possible outcomes of an experiment is called the sample space of experiment</p>
+<blockquote>
+<p>样本点 Point: 每一个outcome可以成为一个样本点(Point或者Element)</p>
+</blockquote>
+</blockquote>
+<p>事件，随机事件，偶然事件 Events</p>
+<blockquote>
+<p>An event is a well-defined <font color="red"><strong>set</strong></font> of possible <strong>outcomes</strong> of the experiment</p>
+<blockquote>
+<ul>
+<li>衍生出不可能事件和必然事件</li>
+<li>样本空间的子集</li>
+<li>全部的样本点组成了样本空间，部分样本点组成了事件，和容易判定的一个关系。</li>
+</ul>
+</blockquote>
+</blockquote>
+<p>概率 Probability</p>
+<blockquote>
+<p>A probability measure ,or simply a probability,on a sample space S is a specification numbers Pr(A) for event A that satisfy of Kolmogorov Axioms 1,2 and 3</p>
+<blockquote>
+<p>Axioms 1: 对于任意事件A：$Pr(A)\geq1$<br>Axioms 2: 必然要发生的事件的概率是1<br>Axioms 3: 对于无限不向交事件序列$A_1,A_2,A_3,…$那么：$Pr( \bigcup\limits_{i=1}^\infty A_i)=\sum\limits_{i=1}^\infty Pr(A_i)$</p>
+</blockquote>
+</blockquote>
+<p>概率论现在研究以及以后都要研究的重点，也是概率论最核心的问题！</p>
+<ol>
+<li>已知一个试验的所有输出及其概率，我们要确定一个方法来计算某个事件的概率。</li>
+<li>当得到附加的信息后如何调整修正当前事件的概率</li>
+</ol>
+<h3 id="1-4-Sample-Statistics"><a href="#1-4-Sample-Statistics" class="headerlink" title="1.4 Sample Statistics"></a>1.4 Sample Statistics</h3><h3 id="1-4-7-条件期望-Conditional-Expectation"><a href="#1-4-7-条件期望-Conditional-Expectation" class="headerlink" title="1.4.7 条件期望(Conditional Expectation)"></a>1.4.7 条件期望(Conditional Expectation)</h3><p>Def: Let X and Y be random variables such that the mean of Y exists and is finite.The conditional expectation(or conditional mean) of Y given X=x is denoted by E(Y|x) and is defined to be the expectation of the conditional distribution of Y given X=x. </p>
+<h2 id="2-Course-An-introduction-to-statistical-learning-with-application-to-R-lower-level"><a href="#2-Course-An-introduction-to-statistical-learning-with-application-to-R-lower-level" class="headerlink" title="2 Course: An introduction to statistical learning, with application to R -lower level"></a>2 Course: An introduction to statistical learning, with application to R -lower level</h2><p><a href="https://www.r-bloggers.com/in-depth-introduction-to-machine-learning-in-15-hours-of-expert-videos/" target="_blank" rel="noopener">MOOC</a> <br></p>
+<h3 id="Chapter-1-Introduction"><a href="#Chapter-1-Introduction" class="headerlink" title="Chapter 1 Introduction"></a>Chapter 1 Introduction</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Chapters</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Basic terminology and concepts and KNN</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Linear regression</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Logistic regression and lin-ear discriminant analysis.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Cross-validation and the bootstrap</td>
+</tr>
+<tr>
+<td>6</td>
+<td>A host of linear methods:stepwise selection, ridge regression, principal components regression, partial least square, lasso</td>
+</tr>
+<tr>
+<td>7</td>
+<td>non-linear methods that work well for problems with a single input variable.And how these methods can be used to fit non-linear additive models for which there is more than one input.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>tree-based methods, including bagging, boosting,a n drandom forests.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Support vector machines, a set of approaches for performing both linear and non-linear classification</td>
+</tr>
+<tr>
+<td>10</td>
+<td>consider a setting in which we have input variables but no output variable.PCA,K-means,hierarchical clustering</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="II-Applied-Statistics-2020-03-2020-06"><a href="#II-Applied-Statistics-2020-03-2020-06" class="headerlink" title="II Applied Statistics 2020.03-2020.06"></a>II Applied Statistics 2020.03-2020.06</h1><h2 id="1-1-Overview-0-25min-需要回顾"><a href="#1-1-Overview-0-25min-需要回顾" class="headerlink" title="1.1 Overview   0-25min 需要回顾"></a>1.1 Overview   0-25min 需要回顾</h2><p>1) 探索多元数据集：描述性统计数据和图形显示。多元样本的几何形状。广义方差。协方差矩阵导出的度量。<br>   Exploring a multivariate dataset: descriptive statistics and graphical displays. The geometry of a multivariate sample. Generalized Variance. The metric induced by the covariance matrix.</p>
 <p>2) 数据表示和降维：协方差结构分析，主成分分析。独立成分分析。<br>   Data representation and dimensional reduction: the analysis of the covariance structure, principal component analysis. Independent component analysis.</p>
 <p>3) 关于平均向量的推论：$Hotelling T^2$检验。置信区域和分量均值的同时比较。Bonferroni方法可进行多次比较。<br>   Inferences about a mean vector:$Hotelling T^2$test. Confidence regions and simultaneous comparisons of component means. The Bonferroni method for multiple comparisons.<br>   家庭错误率和错误发现率。几种多元均值的比较。方差分析和MANOVA。线性模型的推论。<br>   Familywise Error Rate and False Discovery Rate. Comparisons of several multivariate means. ANOVA and MANOVA.  Inference for Linear Models.<br>   超越最小二乘法：岭回归，套索，正则化最小二乘。广义线性模型简介。<br>   Beyond Ordinary Least Squares: ridge regression, lasso, regularized least Squares. Introduction to generalized linear models.</p>
 <p>4) 区分，分类，聚类。统计分类：模型，分类错误成本和先验概率。<br>   Discrimination, classification, clustering. Statistical classification: model, misclassification costs and prior probability.<br>   贝叶斯监督分类和Fisher方法进行判别分析。<br>   Bayesian supervised classification and the Fisher approach to discriminant analysis.<br>   分类的替代方法：逻辑回归，CART。相似性度量。无监督分类；分层和非分层方法。多维缩放。<br>   Alternative approaches to classification: logistic regression, CART. Similarity measures. Unsupervised classification; hierarchical and nonhierarchical methods. Multidimensional scaling.</p>
 <p>5) 统计学习的进展：功能数据分析。数据平滑，降维和表示。功能主成分分析。数据记录：相位和幅度可变性。功能数据分类。<br>   Advances in Statistical Learning: Functional Data Analysis. Data smoothing, dimensional reduction and representation. Functional principal component analysis. Data registration: phase and amplitude variability. Classification of functional data.</p>
 <p>6) 统计学习的进展：空间数据。随机字段，方差图模型和方差图拟合。空间预测和Kriging，具有空间依赖性的功能数据。<br>   Advances in Statistical Learning:  spatial data. Random fields, variogram models and variogram fitting. Spatial prediction and Kriging, Functional data with spatial dependence.</p>
-<h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><h1 id="2-Stochasitic-Dynamical-Models"><a href="#2-Stochasitic-Dynamical-Models" class="headerlink" title="2 Stochasitic Dynamical Models"></a>2 Stochasitic Dynamical Models</h1><h2 id="2-1-Basic-Concept"><a href="#2-1-Basic-Concept" class="headerlink" title="2.1 Basic Concept"></a>2.1 Basic Concept</h2><ul>
+<h2 id="1-2-Project"><a href="#1-2-Project" class="headerlink" title="1.2 Project"></a>1.2 Project</h2><p>20200313 介绍了推荐使用的一些dataset.</p>
+<ol>
+<li>West Nile Virus Prediction(西尼罗河病毒预测): <a href="http://www.kaggle.com/c/predict-west-nile-virus/overview" target="_blank" rel="noopener">http://www.kaggle.com/c/predict-west-nile-virus/overview</a></li>
+<li>Predicting Molecular Properties(预测分子性质): <a href="http://www.kaggle.com/c/champs-scalar-coupling/data" target="_blank" rel="noopener">http://www.kaggle.com/c/champs-scalar-coupling/data</a></li>
+<li>ATLAS OF ECONOMIC COMPLEXITY: <a href="http://atlas.cid.harvard.edu" target="_blank" rel="noopener">http://atlas.cid.harvard.edu</a></li>
+<li>Novel Corona Virus 2019 Dataset: <a href="http://www.kaggle.com/udakairahjkumar" target="_blank" rel="noopener">http://www.kaggle.com/udakairahjkumar</a></li>
+<li>m5-forecasting-accuracy: <a href="http://www.kaggle.com/c/m5-forecasting-accuracy" target="_blank" rel="noopener">http://www.kaggle.com/c/m5-forecasting-accuracy</a></li>
+<li>2019 Data Science Bowl: <a href="http://www.kaggle.com/c/data-science-bowl-2019" target="_blank" rel="noopener">http://www.kaggle.com/c/data-science-bowl-2019</a></li>
+<li>Satellite RADAR Interferometry for Geo-Hazard</li>
+<li>Spectroscopic data for planetary investigations</li>
+<li><strong>x-ray</strong> - 非常感兴趣</li>
+<li></li>
+</ol>
+<h2 id="1-3-Lecture-Notes"><a href="#1-3-Lecture-Notes" class="headerlink" title="1.3 Lecture Notes"></a>1.3 Lecture Notes</h2><h1 id="2-Stochasitic-Dynamical-Models"><a href="#2-Stochasitic-Dynamical-Models" class="headerlink" title="2 Stochasitic Dynamical Models"></a>2 Stochasitic Dynamical Models</h1><h2 id="2-1-Basic-Concept"><a href="#2-1-Basic-Concept" class="headerlink" title="2.1 Basic Concept"></a>2.1 Basic Concept</h2><ul>
 <li>$j$ is <strong>accessiable</strong> from $i$.</li>
 <li>$j$ and $i$ <strong>communicate</strong>.</li>
 <li>$C$ is a <strong>class</strong> in $E$ .</li>
@@ -212,9 +306,9 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/Probability">Probability</a>
-                
                   <a class="hover-with-bg" href="/tags/Applied%20Statistics">Applied Statistics</a>
+                
+                  <a class="hover-with-bg" href="/tags/Probability">Probability</a>
                 
               </span>
             
