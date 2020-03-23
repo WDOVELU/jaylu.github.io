@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    100 字
+                    1.5k 字
                   </span>&nbsp;
                 
 
@@ -138,7 +138,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      9 分钟
                   </span>&nbsp;
                 
 
@@ -174,7 +174,76 @@
             <p>Decision variables:<br>Formulation:</p>
 <script type="math/tex; mode=display">
 min~~~~\sum_{i=1}^m\sum_{j=1}^nw_{ij}t_{ij}\\
-s.t~~~~\sum_{j=1}^nw_{ij}\leq p_i</script><p>Evaluation:<br>A written exam which covers all the material presented in the lectures, exercise and computer lab sessions.<br>Students enrolled in both D.O. and N. O. (5 credits each) must take the exam of “Optimization” (8 credits) and conduct a project or an individual study (worth 2 credits) to be de ned with the instructor. (不要太早联系，但是可以考虑3d视觉和优化的结合)</p>
+s.t~~~~\sum_{j=1}^nw_{ij}\leq p_i</script><p>Evaluation:<br>A written exam which covers all the material presented in the lectures, exercise and computer lab sessions. <br><br>Students enrolled in both D.O. and N. O. (5 credits each) must take the exam of “Optimization” (8 credits) and conduct a project or an individual study (worth 2 credits) to be de ned with the instructor. (不要太早联系，但是可以考虑3d视觉和优化的结合)</p>
+<h1 id="3-2-Alternative-strong-and-ideal-formulations"><a href="#3-2-Alternative-strong-and-ideal-formulations" class="headerlink" title="3.2 Alternative, strong and ideal formulations"></a>3.2 Alternative, strong and ideal formulations<br></h1><p> In linear optimization, good formulations contain a small number of variables n and constraints m because the complexity of algorithms grows polynomially in n and m. </p>
+<p>The choice of the formulation does not critically a ect the possibility of solving LPs.<br>For ILP and MILP problems, the choice of the formulation is crucial. </p>
+<h2 id="3-2-1-Alternative-and-strong-formulations"><a href="#3-2-1-Alternative-and-strong-formulations" class="headerlink" title="3.2.1 Alternative and strong formulations"></a>3.2.1 Alternative and strong formulations</h2><p> <strong>Definition</strong>: Given any MILP </p>
+<script type="math/tex; mode=display">z_{MILP} =min~~ \underline{c}^t_1 \underline{x}+\underline{c}^t_2 \underline{y}  \\s.t.~~~~ A_1\underline{x} +A_2\underline{y}\geq b\\ x \geq0 \\~~~~~~~~~~~~~~~y\geq 0 ~~integer</script><p>its <font color = 'blue'> linear programming (LP) relaxation</font> is; </p>
+<script type="math/tex; mode=display">z_{LP} =min~~ \underline{c}^t_1 \underline{x}+\underline{c}^t_2 \underline{y}  \\s.t.~~~~ A_1\underline{x} +A_2\underline{y}\geq b\\ x \geq0 \\y\geq 0</script><p>where $y_j\in\mathbb{Z}$ are omitted for all $j$.</p>
+<p>If $y_j\in\mathbb{Z}$  with $0 \leq y_j \leq u_j$, then in LP relaxation $y_j \in [0,u_j].$<br><strong>Illustration</strong>:</p>
+<p><font color="red">Feasible regions</font> of the MILP: </p>
+<script type="math/tex; mode=display">X_{MILP} =  \{(\underline{x},\underline{y}) \in \mathbb{R}^{n_1} \times \mathbb{Z}^{n_2}  ~:~~ A_1\underline{x} + A_2 \underline{y}\geq b,~ x \geq 0,~ y \geq 0\}</script><p>and of its LP relaxation: </p>
+<script type="math/tex; mode=display">X_{LP} = \{(\underline{x},\underline{y})\in \mathbb{R}^{n_1} \times \mathbb{Z}^{n_2}  ~:~~ A_1\underline{x} + A_2 \underline{y}\geq b,~ x \geq 0,~ y \geq 0\}</script><p>Obviously $X_{MILP} \subseteq X_{LP}$.<br> <strong>Proposition</strong>: For any <em>minimization</em> MILP, we have:   </p>
+<ul>
+<li>$z_{LP} \leq z_{MILP}$, that is, $z_{LP} $ is a lower bound for$z_{MILP} $ ,  </li>
+<li><p>if optimal solution $(\underline{x}^<em>_{LP} ,\underline{y}^</em>_{LP} )$ of LP relaxation is integer (feasible for MILP), it is also optimal for MILP.     </p>
+<p>For <em>maximization</em> problems, $z_{LP} \leq z_{MILP}$.<br>Same holds for ILPs. </p>
+</li>
+</ul>
+<p><strong>Definition</strong>:   A polyhedron</p>
+<script type="math/tex; mode=display">P = \{(\underline{x},\underline{y})\in \mathbb{R}^{n_1+n_2}  ~:~~ A_1\underline{x} + A_2 \underline{y}\geq b,~ x \geq 0,~ y \geq 0\} \subseteq\mathbb{R}^{n_1+n_2}</script><p>is a formulation for a mixed integer set $X\subseteq\mathbb{R}^{n_1}\times\mathbb{Z}^{n_2}$  if and only if $X=P\cap(\mathbb{R}^{n_1}\times\mathbb{Z}^{n_2} )$</p>
+<p><strong>Illustrations</strong>:</p>
+<p><strong>Observation</strong>: Any MILP admits an in nite number of alternative formulations. Equivalent from MIP point of view but di erent feasible regions of LP relaxations. </p>
+<p>Examples:<br>  1) Two alternative formulations for TSP: with cut-set or subtour-elimination constraints.<br> 1)  Original formulation for UFL: </p>
+<script type="math/tex; mode=display">
+min~~~~\sum_{i=1}^m\sum_{j=1}^nc_{ij}x_{ij}+\sum_{j=1}^nf_{j}y_{j}\\
+s.t~~~~\sum_{j=1}^nx_{ij}= 1 ~~~\forall i\in M\\
+~~~~\sum_{i=1}^mx_{ij}\leq my_j ~~~\forall j\in N~~~~~~~~1)\\
+~~~~y_j\in\{0,1\}~~~\forall j\in N\\
+~~~~0\leq x_{ij}\leq1~~~\forall i \in M~ \forall j\in N</script><p>Alternative formulation: n linking constraints (1) are substituted with mn constraints :</p>
+<script type="math/tex; mode=display">x_{ij}\leq y_j~~~\forall i \in M~ \forall j\in N ~~~~~~~~2)</script><p><strong>Definition</strong>:<br>Given a mixed integer set  $X\subseteq\mathbb{R}^{n_1}\times\mathbb{Z}^{n_2}$  and two formulations $P_1$ and $P_2$ for X, $P_1$ is stronger than $P_2$ if $P_1\subset P_2$.  </p>
+<p>The lower bound provided by the LP relaxation $P_1$ is not smaller (not weaker) than that provided by $P_2$: </p>
+<script type="math/tex; mode=display">
+z_{MILP} = min\{\underline{c}^t_1\underline{x} +\underline{c}^t_2\underline{y} : (\underline{x},\underline{y})\in X \}\\~~~~~~~~~~~~\geq min\{\underline{c}^t_1\underline{x} +\underline{c}^t_2\underline{y} : (\underline{x},\underline{y})\in P_1 \}\\~~~~~~~~~~~~\geq min\{\underline{c}^t_1\underline{x} +\underline{c}^t_2\underline{y} : (\underline{x},\underline{y})\in P_2 \}</script><p><strong>Examples</strong>:<br>1) Uncapacitated Facility Location (UFL)<br>    <strong>Proposition</strong>: The LP relaxation of the MILP formulation with constraints $x_{ij}\leq y_j$ is stronger than that with aggregated constraints $\sum_{i=1}^mx_{ij}\leq my_j$.<br>    <strong>Proof</strong>:</p>
+<pre><code>$$P_1 = \{(\underline{x},\underline{y})\in \mathbb{R}^{mn+n}  ~:~\sum_{j=1}^m x_{ij} =1,\forall i,x_{ij}\leq y_j, \forall i,\forall j,0\leq x_{ij}\leq1,\forall i,\forall j,0\leq y_{j}\leq1,\forall j\}$$
+$$P_2 = \{(\underline{x},\underline{y})\in \mathbb{R}^{mn+n}  ~:~\sum_{j=1}^m x_{ij} =1,\forall i,\sum_{i=1}^mx_{ij}\leq m y_j, \forall i,\forall j,0\leq x_{ij}\leq1,\forall i,\forall j,0\leq y_{j}\leq1,\forall j\}$$
+</code></pre><p>Obviously $P_1 \subseteq P_2$.<br>Exhibit $(\underline{x},\underline{y})\in P_2|P_1$: </p>
+<p>2)Symmetric TSP (STSP) STSP:<br>Given undirected $G= (V,E)$ and cost $c_e$ for every $e=\{i,j\}\in E$, determine a <strong>Hamiltonian cycle</strong> of $G$ (i.e., a cycle visiting each $i\in V$ exactly once) of minimum total cost. </p>
+<p><strong>Two alternative formulations:</strong></p>
+<script type="math/tex; mode=display">
+min~~~~~\sum_{e\in E}c_ex_e\\
+s.t.~~~~~\sum_{e\in\delta(i)}x_e=2~~~~i\in V~~~~(DEG)\\
+~~~~~~~~~~\sum_{e\in\delta(S)}x_e\geq2~~~~S\subset V, S\neq \empty~~~~(CUT)\\
+~~~~~~~~~~x_e\in \{0,1\}~~~~e\in E</script><p>where $\delta(S) = \{\{i,j\}\in E: i\in S,j\in V|S\},~\delta(i)=\delta(\{i\})$</p>
+<script type="math/tex; mode=display">
+min~~~~~\sum_{e\in E}c_ex_e\\
+s.t.~~~~~\sum_{e\in\delta(i)}x_e=2~~~~i\in V~~~~(DEG)\\
+~~~~~~~~~~\sum_{e\in\delta(S)}x_e\leq |S|-1~~~~S\subset V,| S|\geq2~~~~(SEC)\\
+~~~~~~~~~~x_e\in \{0,1\}~~~~e\in E</script><p>where $E(S) = \{\{i,j\}\in E: i\in S,j\in S\}$<br>(DEG), (SEC) and (CUT) are, respectively, thedegree,subtour-eliminationandcut-set constraints.   </p>
+<p>Let $P_{sec}$ and $P_{cut}$ be the polyhedra (feasible regions) of the respective LP relaxations. Proposition: The two formulations are equally strong ($P_{sec} = P_{cut}$).<br><strong>Proof</strong>:   </p>
+<blockquote>
+<p> We verify that: a) $P_{sec} \subseteq P_{cut}$ and b) $P_{cut} \subseteq P_{sec}$.<br>For any $S \subseteq V$</p>
+<script type="math/tex; mode=display">\sum_{i\in S}\sum_{e\in\delta(i)}x_e = 2|S|~~~~~~~~~~~~~~~~~3)</script><p>in $\sum_{i\in S}\sum_{e\in\delta(i)}x_e$ each $e=\{i,j\}$ with $i\in S$ and $j\in S$ occurs twice,while each $e=\{i,j\}$ with  $i\in S$ and $j\in V|S$ occurs just once.<br>Thus (3) can be rewritten as </p>
+<script type="math/tex; mode=display">2\sum_{e\in E(S)}x_e+\sum_{e\in \delta(S)}x_e=2|S|</script><p>where  $E(S)=\{\{i,j\}\in E: i\in S,j\in S\}$<br>Since $2\sum_{e\in E(S)}x_e+\sum_{e\in \delta(S)}x_e=2|S|$</p>
+<ul>
+<li>From (SEC) we have $2\sum_{e\in E(S)}x_e\leq2|S|-2$.<br>Thus   $2|S|-\sum_{e\in \delta(S)}x_e=2\sum_{e\in E(S)}x_e\leq2|S|-2$, that is  <script type="math/tex; mode=display">\sum_{e\in \delta(S)}x_e\geq2</script></li>
+<li>(CUT) amounts to $\sum_{e\in \delta(S)}x_e\geq2$<br>Thus $2|S|\geq2\sum_{e\in E(S)}x_e+2$,   that is<script type="math/tex; mode=display">\sum_{e\in E(S)}x_e\leq |S|-1</script></li>
+</ul>
+</blockquote>
+<h2 id="3-2-2-Ideal-formulations"><a href="#3-2-2-Ideal-formulations" class="headerlink" title="3.2.2 Ideal formulations"></a>3.2.2 Ideal formulations</h2><p><strong>Theorem (Meyer):</strong>  Let $X\subseteq\mathbb{R}^{n_1} \times\mathbb{Z}^{n_2}$ be the mixed integer feasible set (feasible region) of any MILP with rational coefficients, then conv(X) is a rational polyhedron. Moreover, all extreme points of conv(X) belong to X.<br>For bounded integer X, intuitive and no need for rational coefficients assumption.<br> Consequence: </p>
+<script type="math/tex; mode=display">min\{\underline{c}^t\underline{x}:\underline{x}\in X\}=min\{ \underline{c}^t\underline{x}:\underline{x}\in conv(X)\}</script><p>If we knew conv(X) explicitly, we could solve the left-hand-side (M)ILP by solving a single Linear Program! </p>
+<p>Clearly feasible region P of LP relaxation of any formulation satisfies $X\subseteq conv(X)\subseteq P$</p>
+<p><strong>Definition</strong>: Let $X\subseteq\mathbb{R}^{n_1} \times\mathbb{Z}^{n_2}$ be any mixed integer feasible set, the ideal (perfect) formulation for X is the polyhedron $P\subseteq\mathbb{R}^{n_1+n_2}$ with $P=conv(X)$.</p>
+<p>Since ideal formulation is often of exponential size or dicult to determine, we strive for strong formulations. </p>
+<p><strong>Examples</strong>:<br>1) Assignment problem  <br>Natural ILP formulation:  </p>
+<script type="math/tex; mode=display">min~~~~\sum_{i=1}^n\sum_{j=1}^nc_{ij}x_{ij}\\
+s.t~~~~\sum_{i=1}^nx_{ij}= 1 ~~~\forall j\\
+~~~~\sum_{j=1}^nx_{ij}= 1 ~~~\forall i\\
+~~~~x_{ij}\in\{0,1\}~~~~\forall i ~ \forall j</script><blockquote>
+<p> <strong>Proposition</strong>:   </p>
+<script type="math/tex; mode=display">P = \{\underline{x}\in \mathbb{R}^{n^2}  ~:~\sum_{i=1}^n x_{ij} =1,\forall j,\sum_{j=1}^n x_{ij} =1,\forall i,0\leq x_{ij}\leq1,\forall i,\forall j \}</script><p>is an ideal formulation for the Assignment problem. Proof later </p>
+</blockquote>
+<p>2) Perfect Matching problem (PM) </p>
 
             <hr>
           </div>
@@ -403,5 +472,20 @@ s.t~~~~\sum_{j=1}^nw_{ij}\leq p_i</script><p>Evaluation:<br>A written exam which
 
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
