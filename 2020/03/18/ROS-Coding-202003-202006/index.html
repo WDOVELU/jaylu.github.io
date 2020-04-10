@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>ROS lab session 202003-202006 ~ Hexo</title>
+  <title>ROS Coding 202003-202006 ~ Hexo</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    88 字
+                    805 字
                   </span>&nbsp;
                 
 
@@ -138,7 +138,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      1 分钟
+                      4 分钟
                   </span>&nbsp;
                 
 
@@ -185,33 +185,63 @@
 <li><p>Basic concepts</p>
 </li>
 </ul>
-<h1 id="1-ROS-structure"><a href="#1-ROS-structure" class="headerlink" title="1 ROS structure"></a>1 ROS structure</h1><h1 id="2-ROS-COMMANDS"><a href="#2-ROS-COMMANDS" class="headerlink" title="2 ROS COMMANDS"></a>2 ROS COMMANDS</h1><p>roscd roscpp &amp;&amp; pwd   </p>
-<blockquote>
-<p> /opt/ros/melodic/share/roscpp</p>
+<h1 id="I-ROS-structure"><a href="#I-ROS-structure" class="headerlink" title="I ROS structure"></a>I ROS structure</h1><h1 id="II-ROS-COMMANDS"><a href="#II-ROS-COMMANDS" class="headerlink" title="II ROS COMMANDS"></a>II ROS COMMANDS</h1><h2 id="1-Change-directory-in-the-ROS-file-system-roscd-package-name-subdir"><a href="#1-Change-directory-in-the-ROS-file-system-roscd-package-name-subdir" class="headerlink" title="1. Change directory in the ROS file system roscd [package_name[/subdir]]"></a>1. Change directory in the ROS file system roscd [package_name[/subdir]]</h2><blockquote>
+<p> roscd roscpp &amp;&amp; pwd      /opt/ros/kinetic/share/roscpp<br> roscd roscpp                     /srv/opt/ros/kinetic/share/roscpp/srv<br>roscd robby_roboto          ~/catkin_ws/src/robby_roboto  </p>
 </blockquote>
-<p>roscd roscpp/srv</p>
+<h2 id="2-Getting-information-about-installed-packages"><a href="#2-Getting-information-about-installed-packages" class="headerlink" title="2. Getting information about installed packages"></a>2. Getting information about installed packages</h2><p>rospack <subcommand> [options] [package]<br>subcommands (among the others)     </p>
 <blockquote>
-<p>进入/opt/ros/melodic/share/roscpp/srv</p>
+<p>depends [package] package dependencies<br>find [package]           find package directory<br>list                                  list available packages<br>profile                          scan all workspace and index packages<br>Example<br>rospack find roscpp             /opt/ros/kinetic/share/roscpp<br>rospack list<several packages><br>rospack list | grep turtle  </p>
 </blockquote>
-<p>rospack depends roscpp</p>
+<h2 id="3-To-start-the-ROS-middleware-just-type-in-a-terminal"><a href="#3-To-start-the-ROS-middleware-just-type-in-a-terminal" class="headerlink" title="3. To start the ROS middleware just type in a terminal \"></a>3. To start the ROS middleware just type in a terminal \</h2><p>roscore   进入ros 环境<br>Now it is possible to display information about the elements currently running   </p>
 <blockquote>
-<p>查看依赖包</p>
+<p>rosnode list<br>rostopic list<br>rostopic echo /rosout<br>rosservice list<br>rqt_graph   node图形界面</p>
+<ul>
+<li>rostopic 和 rosnode 什么关系</li>
+</ul>
 </blockquote>
-<p>rospack find roscpp</p>
+<h2 id="4-Getting-information-about-running-nodes"><a href="#4-Getting-information-about-running-nodes" class="headerlink" title="4. Getting information about running nodes"></a>4. Getting information about running nodes</h2><p>   rosnode <command> [other_commands]<br>   subcommands (among the others) </p>
 <blockquote>
-<p>/opt/ros/melodic/share/roscpp</p>
+<p>ping     test connectivity to node<br>info     print information about node<br>kill       kill a running node<br>cleanup       purge registration information of unreachable nodes<br>rosnode list<br>rosnode info /rosout</p>
 </blockquote>
-<p>rospack list | grep turtle</p>
+<h2 id="5-To-start-a-ROS-node-type-in-a-terminal"><a href="#5-To-start-a-ROS-node-type-in-a-terminal" class="headerlink" title="5.  To start a ROS node type in a terminal"></a>5.  To start a ROS node type in a terminal</h2><p>  rosrun [package_name] [node_name]    </p>
 <blockquote>
-<p>列出packages</p>
+<p>rosrun turtlesim turtlesim_node<br>rosnode ping /turtlesim<br>rosnode info /turtlesim<br>rosrun turtlesim turtle_teleop_key      //可以视作run一个实时控制的node</p>
+<blockquote>
+<p>turtle_teleop_key is publishing the key strokes on a topic<br>turtlesim subscribes to the same topic to receive the key strokes    </p>
 </blockquote>
-<p>rospack profile</p>
-<blockquote>
-<p>scan all workspace and index packages</p>
 </blockquote>
-<p>roscore</p>
+<h2 id="6-DEALING-WITH-TOPICS-To-show-the-running-node-type-in-a-terminal"><a href="#6-DEALING-WITH-TOPICS-To-show-the-running-node-type-in-a-terminal" class="headerlink" title="6. DEALING WITH TOPICS - To show the running node type in a terminal"></a>6. DEALING WITH TOPICS - To show the running node type in a terminal</h2><p>rostopic echo /turtle1/cmdele  </p>
 <blockquote>
-<p>进入ros 环境</p>
+<p>打印实时坐标<br>rostopic info /turtle1/pose<br>rostopic type /turtle1/pose</p>
+</blockquote>
+<p>rqt_graph<br>To plot published data on a topic    </p>
+<blockquote>
+<p>rqt_plot /turtle1/pose/x /turtle1/pose/y<br>rqt_plot /turtle1/pose/x:y<br>To monitor a topic on a terminal type rostopic echo /turtle1/cmd_vel</p>
+</blockquote>
+<h2 id="7-DEALING-WITH-TOPICS-CONT-Getting-information-about-ROS-topics"><a href="#7-DEALING-WITH-TOPICS-CONT-Getting-information-about-ROS-topics" class="headerlink" title="7. DEALING WITH TOPICS CONT. - Getting information about ROS topics"></a>7. DEALING WITH TOPICS CONT. - Getting information about ROS topics</h2><p>rostopic <command> [topic_name]<br>subcommands (among the others)    </p>
+<blockquote>
+<p>echo            print messages to screen<br>find              find topics by type<br>hz                 display publishing rate of topic<br>info              print information about active topic<br>list                list active topics<br>pub              publish data to topic   </p>
+<blockquote>
+<p>rostopic pub [topic] [msg type] [args]<br>e.g.1 rostopic pub my_topic std_msgs/String “hello there”<br>e.g.2 rostopic pub -r 10 /cmd_vel geometry_msgs/Twist ‘{linear: {x: 2.0, y: 0.0, z: 0.0}, angular: {x: 0.0,y: 0.0,z: 0.0}}’<br>e.g.3 rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist — ‘[2.0, 0.0, 0.0]’ ‘[0.0, 0.0, 1.8]’<br>The -1 option force rostopic to publish the message only once, if you want to publish the message at a specific frequency you will use:<br>e.g.4  rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 — ‘[2.0, 0.0, 0.0]’ ‘[0.0, 0.0, 1.8]’<br>Where the -r 1 option specify that the message will be published at 1hz frequency<br>type            print topic type<br>rostopic type [topic_name]   |    rostopic type /turtle1/cmd_vel </p>
+</blockquote>
+</blockquote>
+<h2 id="7-MESSAGES-ALSO-SERVICES-Getting-information-about-msg-srv-files"><a href="#7-MESSAGES-ALSO-SERVICES-Getting-information-about-msg-srv-files" class="headerlink" title="7. MESSAGES (ALSO SERVICES) Getting information about msg/srv files"></a>7. MESSAGES (ALSO SERVICES) Getting information about msg/srv files</h2><p>rosmsg <command> [msg/srv_file]<br>subcommands (among the others)   []内可以为/clear 代表为空</p>
+<blockquote>
+<p>show    Display the fields in the msg/srv.    //rosmsg show Pose<br>list         Display names of all msg/srv.       //rosmsg list |grep turtle<br>package       List all the msg/srv in a package.    //rosmsg package nav_msgs<br>packages     List all packages containing the msg/srv. </p>
+<p>rosmsg show Pose<br>rosmsg package nav_msgs</p>
+</blockquote>
+<h2 id="8-DEALING-WITH-SERVICES-Calling-services-from-command-line-and-getting-information"><a href="#8-DEALING-WITH-SERVICES-Calling-services-from-command-line-and-getting-information" class="headerlink" title="8. DEALING WITH SERVICES -  Calling services from command line and getting information:"></a>8. DEALING WITH SERVICES -  Calling services from command line and getting information:</h2><p>rosservice <command> [other_commands]<br>subcommand (among the others)  </p>
+<blockquote>
+<p>list                     Print information about active services.<br>node                Print name of node providing a service.<br>call                   Call the service with the given args.<br>args                 List the arguments of a service.<br>type                 Print the service type.<br>find                  Find services by service type<br>rosservice call /reset<br>rosservice type /reset</p>
+<p>e.g.<br>rosservice call /spawn 10 10 0 t2<br>rostopic list<br>rosbag record /turtle1/pose<br>rosbag info 2020-04-09-15-42-33.bag<br>rosbag play -r 1 2020-04-09-15-42-33.bag</p>
+</blockquote>
+<h2 id="9-BAGS-bag-file-format-to-store-messages-data"><a href="#9-BAGS-bag-file-format-to-store-messages-data" class="headerlink" title="9. BAGS bag: file format to store messages data"></a>9. BAGS bag: file format to store messages data</h2><p>Used to test different algorithm with the exact same input and to debug a system when it’s not monitorable at runtime<br>To record a bag use:   </p>
+<blockquote>
+<p>rosbag record<br>to record all the topics use:<br>rosbag record -a<br>to record only a subset of the topic use:<br>rosbag record topic1 topic2 etc<br>To get info regarding a beg use the command:<br>rosbag info bag_name<br>To play a bag run:<br>rosbag play bag_name<br>remember that to run rosbag you need an active ros session (roscore should be on)<br>Always monitor your bag size, sometimes logging all the topics (if you are working with cameras) is not the best idea because you will produce more data/sec than your max disk writing speed. </p>
+</blockquote>
+<h1 id="III-CREATING-THE-WORKSPACE"><a href="#III-CREATING-THE-WORKSPACE" class="headerlink" title="III CREATING THE WORKSPACE"></a>III CREATING THE WORKSPACE</h1><p>ROS uses a custom compiling environment called Catkin<br>cmake/make with specific flags<br>Requires a workspace with a specific structure Easy to setup and “easy” to use</p>
+<blockquote>
+<p>mkdir -p ~/robotics/src<br>cd ~/robotics/ catkin_make<br>echo “source ~/robotics/devel/setup.bash” &gt;&gt; ~/.bashrc<br>source ~/.bashrc</p>
 </blockquote>
 
             <hr>
@@ -232,9 +262,11 @@
               <span>
                 <i class="iconfont icon-tag"></i>
                 
-                  <a class="hover-with-bg" href="/tags/ROS">ROS</a>
-                
                   <a class="hover-with-bg" href="/tags/Robotics">Robotics</a>
+                
+                  <a class="hover-with-bg" href="/tags/SLAM">SLAM</a>
+                
+                  <a class="hover-with-bg" href="/tags/ROS">ROS</a>
                 
               </span>
             
@@ -376,7 +408,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "ROS lab session 202003-202006&nbsp;",
+        "ROS Coding 202003-202006&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
