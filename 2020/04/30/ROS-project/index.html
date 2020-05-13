@@ -16,7 +16,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Tags - Slam ~ Hexo</title>
+  <title>ROS project ~ Hexo</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -106,7 +106,7 @@
   </div>
 </nav>
 
-    <div class="view intro-2" id="background" parallax=true
+    <div class="view intro-2" id="background" false
          style="background: url('/img/pp.jpg')no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
@@ -116,6 +116,41 @@
               
             </span>
 
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  Thursday, April 30th 2020, 3:16 pm
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    514 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
             
           </div>
 
@@ -127,36 +162,149 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-<!--  <p class="h4">1 posts in total.</p>-->
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/03/04/Robotics-202003-202006-Part1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Robotics 202003-202006 Part1</span>
-      <span style="float: right;">03-04</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="Project-1-GPS-Odometry"><a href="#Project-1-GPS-Odometry" class="headerlink" title="Project 1 GPS Odometry"></a>Project 1 GPS Odometry</h1><p>DDL: 20200508</p>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p><strong>Format: ROS Bag file Data:</strong> </p>
+<ul>
+<li>Car GPS position: latitude, longitude, altitude </li>
+<li>Obstacle GPS position: latitude, longitude, altitude</li>
+</ul>
+<p><strong>Request</strong></p>
+<ol>
+<li>Convert from lla to ENU, zero point should be a parameter in launch file (formulas for conversion are provided in example node) [1]<ol>
+<li>Publish TF and nav_msgs/Odometry for both car and obstacle (in ENU coordinates) [1]</li>
+</ol>
+</li>
+</ol>
+<ol>
+<li>Write a service that returns the distance between the two </li>
+<li>Publish a custom message with fields: distance between car and obstacle status flag </li>
+<li>Optional: use dynamic reconfigure to change status thresholds</li>
+</ol>
+<p><strong>LLA TO ENU</strong> [1]</p>
+<ul>
+<li>You can use the ROS node provided as a starting point  [1]</li>
+<li>The node computes ENU from an hardcoded zero point, values of latitude_init, longitude_init and h0 needs to be parameters for your project   </li>
+<li>You need to run two instances of the node, one for each GPS source </li>
+<li>You need to specify ENU origin point with parameters in launch file </li>
+<li>Default value for ENU origin point is Car starting point </li>
+<li>Write all in a launch file (multiple node start and parameter set point)</li>
+</ul>
+<p><strong>Compute distance</strong> [1]</p>
+<ul>
+<li>To compute the distance use message filters to retrieve the last messages from both ENU processing nodes         [1]</li>
+<li>Use the policy that best fit this scenario [1] </li>
+<li>If GPS loose fix it returns (0,0,0). Handle this scenario when converting to ENU and then when providing distance.  [1]</li>
+</ul>
+<p><strong>Custom message</strong> </p>
+<ul>
+<li>Node ask to the service the distance to fill the distance field </li>
+<li>Based on parameters (default value set in launch file) the flag value of type string assumes different values: <blockquote>
+<p>if dist &gt; 5m: Safe<br>if 1m&lt;dist&lt;5m: Unsafe<br>if dist&lt;1m: Crash<br>Parameters specify the three thresholds</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>Dynamic reconfigure (Optional)</strong>   </p>
+<ul>
+<li>Use Dynamic reconfigure to change the  two thresholds of the custom message string field   </li>
+<li>Use three slider to change the values</li>
+</ul>
+<p><strong>IMPORTANT NOTICE</strong>  </p>
+<ul>
+<li>GPS data might disappear due to bridges, maybe only one will disappear.    </li>
+<li>Handle this scenario properly -&gt; publish a distance of nan if the GPS data are not available, do not publish dist=0.0   </li>
+<li>All nodes should start with a launch file </li>
+<li>Project can be done with an arbitrary number of node</li>
+</ul>
+<p><strong>TIPS FOR DEBUG</strong></p>
+<ul>
+<li>You can use rviz to visualize the odometry and tf topic   </li>
+<li>The bag represents a run in the Monza ENI Circuit   </li>
+<li>If you setup rviz properly you should be able to see the two vehicles moving on a trajectory which resembles the circuit layout   </li>
+<li>If the odometry (in meter) has too high values to visualize in rviz use a debug topic with odom=odom/100.0</li>
+</ul>
+<h2 id="Implement"><a href="#Implement" class="headerlink" title="Implement"></a>Implement</h2><ol>
+<li>Convert from lla to ENU, zero point should be a parameter in launch file (formulas for conversion are provided in example node) </li>
+</ol>
+<blockquote>
+<p>LLA -&gt;  ECEF -&gt; ENU 坐标系<br>博客：<a href="https://www.cnblogs.com/langzou/p/11388520.html" target="_blank" rel="noopener">https://www.cnblogs.com/langzou/p/11388520.html</a></p>
+</blockquote>
+<ol>
+<li>Publish TF and nav_msgs/Odometry for both car and obstacle (in ENU coordinates) </li>
+</ol>
+<ol>
+<li>Write a service that returns the distance between the two </li>
+</ol>
+<ol>
+<li>Publish a custom message with fields: distance between car and obstacle status flag </li>
+</ol>
+<ol>
+<li>Optional: use dynamic reconfigure to change status thresholds</li>
+</ol>
 
-
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/Robotics">Robotics</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/Robotics">Robotics</a>
+                
+                  <a class="hover-with-bg" href="/tags/SLAM">SLAM</a>
+                
+                  <a class="hover-with-bg" href="/tags/ROS">ROS</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -221,6 +369,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
@@ -261,7 +414,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Tag - Slam&nbsp;",
+        "ROS project&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
