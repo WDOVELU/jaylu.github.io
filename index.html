@@ -140,6 +140,62 @@
     
     
     <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2020/05/13/Robotics-Localization/">
+        <p class="h4 index-header">Robotics Localization</p>
+      </a>
+
+      <a href="/2020/05/13/Robotics-Localization/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">Robot Localization –Sensor Models and Bayesian Filtering　０Basic concepetOverview
+
+Localizations
+$z$ : measurement from sensor, such as laser, sonar, etc.
+$x$: position of robot.
+$m$: map.
+
+1 Beam Sensor Model
+
+
+P_{hit}(z|x,m)=\eta\frac{1}{z_{rand}} ~~~~P_{max}(z|x,m)=\eta\frac{1}{z_{small}}
+2 Scan Sensor Model
+The Beam sensor model assumes independence between beams and between physical causes of measurements and has some issues: 
+
+Overconfident because of independency assumptions 
+
+Need to lear</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-05-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/Robotics">Robotics</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/Robotics">Robotics</a>&nbsp;
+          
+            <a href="/tags/ROS">ROS</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
       <a href="/2020/04/30/ROS-project/">
         <p class="h4 index-header">ROS project</p>
       </a>
@@ -612,80 +668,19 @@ Ros实验课0408\0409回顾</div>
     </div>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2020/03/01/2019-2020-PLAN/">
-        <p class="h4 index-header">2019-2020_PLAN</p>
-      </a>
-
-      <a href="/2020/03/01/2019-2020-PLAN/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">2019-20201. Courses Overview
 
 
-
-Code
-Name
-Website
-Course Materials
-Evaluation
-
-
-
-
-2nd Semester
-
-
-
-
-
-
-052498
-APPLIED_STATISTICS
-Course Details  BEEP An introduction to statistical learning, with application to R  MOOC
-R,Slides,Lab Session
-[1]40% Team project(Evaluated  by  teachers  and students)[2]60% Written Test
-
-
-
-095972
-OPTIMIZATION
-Course Details http://home.deib.polimi.it/amaldi/OPT-18-19.shtml
-AMPL,CPLEX,Matlab,Slides,Exercises,Exam(NO+DO)
-[1]written exam[2]computer laboratory tests
-
-
-090</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-01&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/Study_Plan">Study_Plan</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/Study_Plan">Study_Plan</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-
+  <nav aria-label="index posts navigation">
+    <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+    </span>
+  </nav>
+  
+  <script>
+    for (ele of document.getElementById("pagination").getElementsByClassName("page-number")) {
+      ele.href += '#board';
+    }
+  </script>
 
 
 
