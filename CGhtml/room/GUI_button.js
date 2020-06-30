@@ -24,13 +24,16 @@ function onDropdownChange(value){
 function onViewChange(value){
   selectView = value;
   console.log("selectView: "+selectView);
-  if(selectView == 11 ){
-     cx = 0.9744458393861116;
-     cy = 1.724567651205733;
-     cz = 12.994299646752506;
-     roll = elevation =angle = 0.01;
-     Oelevation = -49;   //pitch for mouse
-     Oangle =120.6;       //yaw for mouse
+  if(selectView == 11 ){ 
+      cx = -0.525772281081319;
+      cy = 1.724524017978642;
+      cz = 11.74456143851955;
+      elevation = 0.01;
+      angle = 0.01;
+      roll = 0.01;
+      Oelevation = -44.59999999999991;   //pitch for mouse
+      Oangle =225.59999999999962;       //yaw for mouse
+
   }
   if(selectView == 12 ){
     cx = 0;
@@ -86,14 +89,7 @@ function edit_furniture() {
         
         // translation
         if(keyPressed["z"] || (editing_op_button == 8 && rotating) )
-        {
-           cx = 0;
-           cy = -0.5;
-           cz = 11;
-           roll = elevation =angle = 0.01;
-           Oelevation = -90.0;
-           Oangle = 0.0;
-           
+        {   
            mr.location[0]+=(-up[0]*dy+right[0]*dx)*0.02;
            mr.location[1]+=(-up[1]*dy+right[1]*dx)*0.02;
            mr.location[2]+=(-up[2]*dy+right[2]*dx)*0.02;

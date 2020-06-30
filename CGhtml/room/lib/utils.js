@@ -56,7 +56,7 @@ createProgram:function(gl, vertexShader, fragmentShader) {
     const expandFullScreen = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      //console.log(canvas.width+" "+window.innerWidth);
+      console.log(canvas.width+" "+window.innerWidth);
         
     };
     expandFullScreen();
@@ -318,7 +318,7 @@ createProgram:function(gl, vertexShader, fragmentShader) {
 		return out;
 	},
 	
-//Transpose the values of a mat3
+// Transpose the values of a mat3
 
 	transposeMatrix3 : function(a) {
 
@@ -337,6 +337,7 @@ createProgram:function(gl, vertexShader, fragmentShader) {
 		
 		return out;
 	},
+
 	
 	invertMatrix3: function(m){
 		out = [];
@@ -515,7 +516,6 @@ createProgram:function(gl, vertexShader, fragmentShader) {
 		out[11] = dz;
 		return out; 
 	},
-
 	
 	MakeRotateXMatrix: function(a) {
 	// Create a transform matrix for a rotation of {a} along the X axis.
@@ -544,8 +544,8 @@ createProgram:function(gl, vertexShader, fragmentShader) {
 		var s = Math.sin(adeg);
 
 		out[0] = out[10] = c;
-		out[2] = -s;
-		out[8] = s;
+		out[2] = s;
+		out[8] = -s;
 
 		return out; 
 	},
@@ -560,8 +560,8 @@ createProgram:function(gl, vertexShader, fragmentShader) {
 		var s = Math.sin(adeg);
 
 		out[0] = out[5] = c;
-		out[4] = -s;
-		out[1] = s;
+		out[4] = s;
+		out[1] = -s;
 
 		return out; 
 	},
@@ -573,6 +573,43 @@ createProgram:function(gl, vertexShader, fragmentShader) {
 
 		out[0] = out[5] = out[10] = s;
 
+		return out; 
+	},
+
+	MakeScaleNuMatrix: function(sx, sy, sz) {
+	// Create a scale matrix for a scale of ({sx}, {sy}, {sz}).
+
+		var out = this.identityMatrix();
+		out[0]  = sx;
+		out[5]  = sy;
+		out[10] = sz;
+		return out; 
+	},
+
+	MakeShearXMatrix: function(hy, hz) {
+	// Create a scale matrix for a scale of ({sx}, {sy}, {sz}).
+
+		var out = this.identityMatrix();
+		out[4]  = hy;
+		out[8] = hz;
+		return out; 
+	},
+
+	MakeShearYMatrix: function(hx, hz) {
+	// Create a scale matrix for a scale of ({sx}, {sy}, {sz}).
+
+		var out = this.identityMatrix();
+		out[1]  = hx;
+		out[9] = hz;
+		return out; 
+	},
+
+	MakeShearZMatrix: function(hx, hy) {
+	// Create a scale matrix for a scale of ({sx}, {sy}, {sz}).
+
+		var out = this.identityMatrix();
+		out[2]  = hx;
+		out[6] = hy;
 		return out; 
 	},
 
@@ -633,6 +670,20 @@ createProgram:function(gl, vertexShader, fragmentShader) {
 		perspective[15] = 0.0;	
 
 		return perspective;
-	}
+	},
 
+	MakeParallel:function(w, a, n, f) {
+	// Creates the parallel projection matrix. The matrix is returned.
+	// {w} contains the horizontal half-width in world units. {a} is the aspect ratio.
+	// {n} is the distance of the near plane, and {f} is the far plane.
+
+		var parallel = this.identityMatrix();
+
+		parallel[0] = 1.0 / w;
+		parallel[5] = a / w;
+		parallel[10] = 2.0 / (n - f);
+		parallel[11] = (n + f) / (n - f);
+
+		return parallel;
+	}
 }

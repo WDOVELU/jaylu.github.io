@@ -6,8 +6,10 @@ var texUnifromLoc;
 var MUnifromLoc;
 var VPUnifromLoc;
 
+
 var perspectiveMatrix;
 var viewMatrix;
+
 var shaderDir;
 var baseDir;
 
@@ -24,7 +26,7 @@ class MeshRenderer {
   textures = [];   // save the textures for this object 
   subMeshData = [];// save the different meshes from obj file or json file
 
-  async LoadObj(objPath) {
+  async  LoadObj(objPath) {
     var objStr = await utils.get_objstr(objPath);
     var mesh = new OBJ.Mesh(objStr);
 
@@ -80,7 +82,7 @@ class MeshRenderer {
   }
 
 
-  async LoadJson(josnPath) {
+  async  LoadJson(josnPath) {
     var model;
     await utils.get_json(josnPath, function (jsonModel) {
       model=jsonModel;
@@ -212,128 +214,7 @@ function loadTexture(path) {
   };
   return texture;
 }
-//######################### Start: function loadTexture(path) #########################
-
-//######################### Start: function main() #########################
-function main() {
-
-  gl.useProgram(program);
-
-  var lastUpdateTime = (new Date).getTime();
-
-  var Rx = 0.0;
-  var Ry = 0.0;
-  var Rz = 0.0;
-  var S = 1.0;
-
-  resizeCanvasToDisplaySize(gl.canvas);
-  gl.clearColor(0.85, 1.0, 0.85, 1.0);
-
-  drawScene();
-
-  // function animate() {
-  //   var currentTime = (new Date).getTime();
-  //   if (lastUpdateTime != null) {
-
-  //   }
-  // lastUpdateTime = currentTime;
-  // }
-
-}
-
-
-function drawScene() {
-  
-  // animate();
-  perspectiveMatrix = utils.MakePerspective(60, gl.canvas.width / gl.canvas.height, 0.01, 100.0);
-  viewMatrix = utils.multiplyMatrices(
-    utils.MakeRotateZMatrix(-roll),utils.MakeView(cx, cy, cz, elevation, angle));
-  
-  // Magic for moving the ship
-  dvecmat = utils.transposeMatrix(viewMatrix); dvecmat[12] = dvecmat[13] = dvecmat[14] = 0.0;
-  xaxis = [dvecmat[0],dvecmat[4],dvecmat[8]];
-  yaxis = [dvecmat[1],dvecmat[5],dvecmat[9]];
-  zaxis = [dvecmat[2],dvecmat[6],dvecmat[10]];
-  
-	// console.log(vx + " " + vy + " " + vz + " " + rvx + " " + rvy + " " + rvz);
-
-  if((rvx != 0) || (rvy != 0) || (rvz != 0)) {
-
-    qx = Quaternion.fromAxisAngle(xaxis, utils.degToRad(rvx * 1));
-    qy = Quaternion.fromAxisAngle(yaxis, utils.degToRad(rvy * 1));
-    qz = Quaternion.fromAxisAngle(zaxis, utils.degToRad(rvz * 1));
-    
-    // console.log("-------round-------");
-    // console.log(vx + " " + vy + " " + vz + " " + rvx + " " + rvy + " " + rvz);
-    // console.log("-------y-------");
-    // console.log(yaxis);
-    // console.log(qy);
-    // console.log("-------z-------");
-    // console.log(zaxis);
-    // console.log(qz);
-
-    newDvecmat = utils.multiplyMatrices(utils.multiplyMatrices(utils.multiplyMatrices (
-    qy.toMatrix4(), qx.toMatrix4()), qz.toMatrix4()), dvecmat);
-    R11=newDvecmat[10];R12=newDvecmat[8];R13=newDvecmat[9];
-    R21=newDvecmat[2]; R22=newDvecmat[0];R23=newDvecmat[1];
-    R31=newDvecmat[6]; R32=newDvecmat[4];R33=newDvecmat[5];
-    
-    if((R31<1)&&(R31>-1)) {
-    theta = -Math.asin(R31);
-    phi = Math.atan2(R32/Math.cos(theta), R33/Math.cos(theta));
-    psi = Math.atan2(R21/Math.cos(theta), R11/Math.cos(theta));
-    
-    } else {
-    phi = 0;
-    if(R31<=-1) {
-    theta = Math.PI / 2;
-    psi = phi + Math.atan2(R12, R13);
-    } else {
-    theta = -Math.PI / 2;
-    psi = Math.atan2(-R12, -R13) - phi;
-    }
-    }
-    elevation = theta/Math.PI*180;
-    roll      = phi/Math.PI*180;
-    angle     = psi/Math.PI*180;
-
-    // console.log("dvecmat" + dvecmat);
-    // console.log("test2： c: "+ cx + " | "+cy + " | "+ cz + " | "+ "theta: "+   theta + " | "+ "phi: "+ phi + " | "+"psi: "+ psi + " | ");
-
-  }
-  
-  delta = utils.multiplyMatrixVector(dvecmat, [vx, vy, vz, 0.0]);
-  cx += delta[0] / 2;
-  cy += delta[1] / 2;
-  cz += delta[2] / 2;
-    
-
-  resizeCanvasToDisplaySize(gl.canvas);
-  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-  gl.clearColor(0.85, 0.85, 0.85, 1.0);
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-  gl.enable(gl.DEPTH_TEST);
-
-  var projectionMatrix = utils.multiplyMatrices(utils.multiplyMatrices(utils.multiplyMatrices(perspectiveMatrix, viewMatrix), utils.MakeRotateXMatrix(-Oelevation)), utils.MakeRotateYMatrix(Oangle));
-
-
-  gl.uniformMatrix4fv(VPUnifromLoc, gl.FALSE, utils.transposeMatrix(projectionMatrix));
-
-  // console.log(selectMeshIdx);
-
-  console.log("c:  "+"["+cx+","+cy+","+cz+","+"]"+"\n" 
-  +" elevation(pitch_x): "+elevation+" angle(yaw_y): "+angle + " roll: "+roll+"\n"
-  +" Oelevation(pitch_x): "+Oelevation+" Oangle(yaw_y): "+ Oangle 
-  )
-  meshRenderers.forEach((mr,i)=>{
-    gl.uniform1i(gl.getUniformLocation(program,"selected"),i==selectMeshIdx?1:0);
-    mr.draw()
-  })
-  window.requestAnimationFrame(drawScene);
-}
-
-//######################### End: function main() #########################
-
+//######################### End: function loadTexture(path) #########################
 
 
 //######################### Start: function init() #########################
@@ -343,7 +224,11 @@ async function init() {
   var page = path.split("/").pop();
   baseDir = window.location.href.replace(page, '');
   shaderDir = baseDir + "shaders/";
+
+  window.addEventListener("keyup", keyFunctionUp, false);
+  window.addEventListener("keydown", keyFunctionDown, false);
   
+
   edit_furniture()
 
   var canvas = document.getElementById("c");
@@ -353,7 +238,7 @@ async function init() {
     return;
   }
 
-  await utils.loadFiles([shaderDir + 'vs.glsl', shaderDir + 'fs.glsl'], function (shaderText) {
+  await  utils.loadFiles([shaderDir + 'vs.glsl', shaderDir + 'fs.glsl'], function (shaderText) {
     var vertexShader = utils.createShader(gl, gl.VERTEX_SHADER, shaderText[0]);
     var fragmentShader = utils.createShader(gl, gl.FRAGMENT_SHADER, shaderText[1]);
     program = utils.createProgram(gl, vertexShader, fragmentShader);
@@ -373,7 +258,6 @@ async function init() {
   meshRenderers.push(await MeshRenderer.LoadJson(baseDir + 'model/sofa2.json'));
   meshRenderers.push(await MeshRenderer.LoadJson(baseDir + 'model/chair.json'));
   meshRenderers.push(await MeshRenderer.LoadJson(baseDir + 'model/closet.json'));
-  
   
   // Debug mesh
   // for (var objnum = 0 ; objnum < meshRenderers.length; ++objnum) {
@@ -410,8 +294,8 @@ async function init() {
   
   meshRenderers[4].location=[-4.642242514494139,0.1443919355765431,2.634768374134994];
   meshRenderers[4].scale=1.7242113198564342;
-  meshRenderers[4].rotY=-90;
-  meshRenderers[4].rotX=0;
+  meshRenderers[4].rotY=88.5;
+  meshRenderers[4].rotX=4.5;
   
   meshRenderers[5].location=[-2.540305105045675,0.12669230752338448,3.2307993458222124];
   meshRenderers[5].scale=0.01414008502913446;
@@ -422,10 +306,116 @@ async function init() {
   meshRenderers[6].scale=4.067370208900927;
   meshRenderers[6].rotY=271;
   meshRenderers[6].rotX=179.5;
+
   
-  main();
+  gl.useProgram(program);
+  resizeCanvasToDisplaySize(gl.canvas);
+  gl.clearColor(0.85, 1.0, 0.85, 1.0);
+
+  drawScene();
+
 }
 //######################### end: function init() #########################
+
+
+//######################### Start: function drawScene() #########################
+
+function drawScene() {
+  
+	perspectiveMatrix = utils.MakePerspective(60, gl.canvas.width / gl.canvas.height, 0.01, 100.0);
+  
+
+	viewMatrix = utils.multiplyMatrices(
+    utils.MakeRotateZMatrix(-roll),utils.MakeView(cx, cy, cz, elevation, angle));
+    
+	  // Magic for moving the ship
+	  dvecmat = utils.transposeMatrix(viewMatrix); dvecmat[12] = dvecmat[13] = dvecmat[14] = 0.0;
+	  
+		// console.log(vx + " " + vy + " " + vz + " " + rvx + " " + rvy + " " + rvz);
+	
+	  if((rvx != 0) || (rvy != 0) || (rvz != 0)) {
+    
+    xaxis = [dvecmat[0],dvecmat[4],dvecmat[8]];
+	  yaxis = [dvecmat[1],dvecmat[5],dvecmat[9]];
+	  zaxis = [dvecmat[2],dvecmat[6],dvecmat[10]];
+	  
+    qx = Quaternion.fromAxisAngle(xaxis, utils.degToRad(rvx * 1));
+		qy = Quaternion.fromAxisAngle(yaxis, utils.degToRad(rvy * 1));
+		qz = Quaternion.fromAxisAngle(zaxis, utils.degToRad(rvz * 1));
+		
+		// console.log("-------round-------");
+		// console.log(vx + " " + vy + " " + vz + " " + rvx + " " + rvy + " " + rvz);
+		// console.log("-------x-------");
+		// console.log(xaxis);
+		// console.log(qx);
+		// console.log("-------y-------");
+		// console.log(yaxis);
+		// console.log(qy);
+		// console.log("-------z-------");
+		// console.log(zaxis);
+		// console.log(qz);
+		
+		newDvecmat = utils.multiplyMatrices(utils.multiplyMatrices(utils.multiplyMatrices (
+		qy.toMatrix4(), qx.toMatrix4()), qz.toMatrix4()), dvecmat);
+		R11=newDvecmat[10];R12=newDvecmat[8];R13=newDvecmat[9];
+		R21=newDvecmat[2]; R22=newDvecmat[0];R23=newDvecmat[1];
+		R31=newDvecmat[6]; R32=newDvecmat[4];R33=newDvecmat[5];
+		
+		if((R31<1)&&(R31>-1)) {
+		theta = -Math.asin(R31);
+		phi = Math.atan2(R32/Math.cos(theta), R33/Math.cos(theta));
+		psi = Math.atan2(R21/Math.cos(theta), R11/Math.cos(theta));
+		
+		} else {
+		phi = 0;
+		if(R31<=-1) {
+		theta = Math.PI / 2;
+		psi = phi + Math.atan2(R12, R13);
+		} else {
+		theta = -Math.PI / 2;
+		psi = Math.atan2(-R12, -R13) - phi;
+		}
+		}
+		elevation = theta/Math.PI*180;
+		roll      = phi/Math.PI*180;
+		angle     = psi/Math.PI*180;
+	
+		// console.log("dvecmat" + dvecmat);
+		// console.log("test2： c: "+ cx + " | "+cy + " | "+ cz + " | "+ "theta: "+   theta + " | "+ "phi: "+ phi + " | "+"psi: "+ psi + " | ");
+	
+	  }
+	  delta = utils.multiplyMatrixVector(dvecmat, [vx, vy, vz, 0.0]);
+	  cx += delta[0] / 2;
+	  cy += delta[1] / 2;
+	  cz += delta[2] / 2;
+  
+  resizeCanvasToDisplaySize(gl.canvas);
+  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+  gl.clearColor(0.85, 0.85, 0.85, 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+  gl.enable(gl.DEPTH_TEST);
+
+  var projectionMatrix = utils.multiplyMatrices(utils.multiplyMatrices(utils.multiplyMatrices(perspectiveMatrix, viewMatrix), utils.MakeRotateXMatrix(-Oelevation)), utils.MakeRotateYMatrix(Oangle));
+
+
+  gl.uniformMatrix4fv(VPUnifromLoc, gl.FALSE, utils.transposeMatrix(projectionMatrix));
+
+  // console.log(selectMeshIdx);
+
+  console.log("c:  "+"["+cx+","+cy+","+cz+","+"]"+"\n" 
+  +" elevation(pitch_x): "+elevation+" angle(yaw_y): "+angle + " roll: "+roll+"\n"
+  +" Oelevation(pitch_x): "+Oelevation+" Oangle(yaw_y): "+ Oangle 
+  )
+  meshRenderers.forEach((mr,i)=>{
+    gl.uniform1i(gl.getUniformLocation(program,"selected"),i==selectMeshIdx?1:0);
+    mr.draw()
+  })
+  window.requestAnimationFrame(drawScene);
+}
+
+//######################### End: function drawScene() #########################
+
+
 
 
 resizeCanvasToDisplaySize = function(canvas) {
@@ -438,8 +428,6 @@ resizeCanvasToDisplaySize = function(canvas) {
   // Resize screen when the browser has triggered the resize event
   window.addEventListener('resize', expandFullScreen);
 }
-
-
 
 window.onload = init;
 
