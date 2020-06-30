@@ -1,6 +1,7 @@
 var program;
 var gl;
 var posAttribLoc;
+var normsAttribLoc;
 var uvAttribLoc;
 var texUnifromLoc;
 var MUnifromLoc;
@@ -9,6 +10,9 @@ var VPUnifromLoc;
 
 var perspectiveMatrix;
 var viewMatrix;
+
+
+
 
 var shaderDir;
 var baseDir;
@@ -25,6 +29,7 @@ class MeshRenderer {
 
   textures = [];   // save the textures for this object 
   subMeshData = [];// save the different meshes from obj file or json file
+  normalvec = [];// save the different meshes from obj file or json file
 
   async  LoadObj(objPath) {
     var objStr = await utils.get_objstr(objPath);
@@ -34,13 +39,21 @@ class MeshRenderer {
     var mtls = new OBJ.MaterialLibrary(mtlStr);  //if we have mtl file ,load it.
 
     this.vao = gl.createVertexArray();
-    gl.bindVertexArray(this.vao);    //状态设置函数
+    gl.bindVertexArray(this.vao);   
 
     var positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(mesh.vertices), gl.STATIC_DRAW);
     gl.vertexAttribPointer(posAttribLoc, 3, gl.FLOAT, false, 0, 0);
-//状态使用
+
+    // console.log(objPath+ " "+ "mesh.vertices length:"+ mesh.vertices.length);
+
+    var normBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, normBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(mesh.vertexNormals), gl.STATIC_DRAW);
+    gl.vertexAttribPointer(normsAttribLoc, 3, gl.FLOAT, false, 0, 0);
+
+    // console.log(objPath+ " "+ "mesh.vertexNormals length:"+ mesh.vertexNormals.length);
 
     var uvBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
@@ -62,16 +75,18 @@ class MeshRenderer {
         texName = "white.png"
       }
 
-      var md = new Map()    
+      var md = new Map()      
       md.start = subMeshIndices.length;
       md.count = indices.length,
       md.texIdx = this.textures.length
       this.subMeshData.push(md)
-
+      this.normalvec.push(md)
       this.textures.push(loadTexture(dir + texName))
 
       subMeshIndices = subMeshIndices.concat(indices)
     }
+    
+    
 
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(subMeshIndices), gl.STATIC_DRAW);
 
@@ -106,10 +121,12 @@ class MeshRenderer {
       if (texName == "") {
         texName = "white.png"
       }
+
       this.textures.push(loadTexture(dir + texName));
     }
 
     var vertices = []
+    var norms = []
     var uvs = []
     var indices = []
     for (var i=0;i<model.meshes.length;++i)
@@ -120,9 +137,12 @@ class MeshRenderer {
       md.count = m.faces.length*3;
       md.texIdx = m.materialindex;
       this.subMeshData.push(md);
-      var startIndex=vertices.length
+      this.normalvec.push(md)
 
+      var startIndex=vertices.length
       m.vertices.forEach((p)=>{vertices.push(p)})
+      
+      m.normals.forEach((p)=>{norms.push(p)})
       if(m.texturecoords)
       {
         m.texturecoords[0].forEach((u)=>{uvs.push(u)})
@@ -139,6 +159,16 @@ class MeshRenderer {
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
     gl.vertexAttribPointer(posAttribLoc, 3, gl.FLOAT, false, 0, 0);
 
+
+    // console.log(josnPath+ "  " + "vertices length:"+vertices.length );
+
+    var normBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, normBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(norms), gl.STATIC_DRAW);
+    gl.vertexAttribPointer(normsAttribLoc, 3, gl.FLOAT, false, 0, 0);
+
+    // console.log(josnPath+ "  " + "norms length:"+norms.length );
+
     var uvBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(uvs), gl.STATIC_DRAW);
@@ -148,9 +178,11 @@ class MeshRenderer {
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
 
+
     gl.bindVertexArray(null);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null);
+
   }
 
   // Overloaded function
@@ -159,6 +191,7 @@ class MeshRenderer {
     await mr.LoadJson(jsonPath)
     return mr
   }
+
   static async LoadObj(objPath) {
     var mr=new MeshRenderer()
     await mr.LoadObj(objPath)
@@ -168,7 +201,9 @@ class MeshRenderer {
   draw() {
     gl.bindVertexArray(this.vao)
     gl.enableVertexAttribArray(posAttribLoc);
+    gl.enableVertexAttribArray(normsAttribLoc);
     gl.enableVertexAttribArray(uvAttribLoc);
+    
 
     var T=utils.MakeTranslateMatrix(this.location[0],this.location[1],this.location[2]);
     var S=utils.MakeScaleMatrix(this.scale);
@@ -189,9 +224,12 @@ class MeshRenderer {
     gl.bindVertexArray(null)
     gl.disableVertexAttribArray(posAttribLoc);
     gl.disableVertexAttribArray(uvAttribLoc);
-
+    gl.disableVertexAttribArray(normsAttribLoc);
+    
   }
+
 }
+
 //######################### End: class MeshRenderer #########################
 
 
@@ -244,11 +282,18 @@ async function init() {
     program = utils.createProgram(gl, vertexShader, fragmentShader);
 
     posAttribLoc = gl.getAttribLocation(program, "a_position")
+    normsAttribLoc = gl.getAttribLocation(program, "a_norms")
     uvAttribLoc = gl.getAttribLocation(program, "a_uv")
+    
 
     texUnifromLoc = gl.getUniformLocation(program, "u_texture")
     VPUnifromLoc = gl.getUniformLocation(program, "VP")
     MUnifromLoc = gl.getUniformLocation(program, "M")
+
+    for(var i = 0; i < unifParArray.length; i++) {
+      program[unifParArray[i].pGLSL+"Uniform"] = gl.getUniformLocation(program, unifParArray[i].pGLSL);
+    }
+
   });
 
   meshRenderers.push(await MeshRenderer.LoadJson(baseDir + 'model/bed.json'));
@@ -399,13 +444,19 @@ function drawScene() {
 
 
   gl.uniformMatrix4fv(VPUnifromLoc, gl.FALSE, utils.transposeMatrix(projectionMatrix));
+  gl.uniform3f(program.eyePosUniform, cx, cy, cz);
+  
+  for(var i = 0; i < unifParArray.length; i++) {
+    unifParArray[i].type(gl);
+  }
+
 
   // console.log(selectMeshIdx);
 
-  console.log("c:  "+"["+cx+","+cy+","+cz+","+"]"+"\n" 
-  +" elevation(pitch_x): "+elevation+" angle(yaw_y): "+angle + " roll: "+roll+"\n"
-  +" Oelevation(pitch_x): "+Oelevation+" Oangle(yaw_y): "+ Oangle 
-  )
+  // console.log("c:  "+"["+cx+","+cy+","+cz+","+"]"+"\n" 
+  // +" elevation(pitch_x): "+elevation+" angle(yaw_y): "+angle + " roll: "+roll+"\n"
+  // +" Oelevation(pitch_x): "+Oelevation+" Oangle(yaw_y): "+ Oangle 
+  // )
   meshRenderers.forEach((mr,i)=>{
     gl.uniform1i(gl.getUniformLocation(program,"selected"),i==selectMeshIdx?1:0);
     mr.draw()

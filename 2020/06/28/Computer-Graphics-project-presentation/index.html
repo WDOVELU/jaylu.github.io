@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    245 字
+                    309 字
                   </span>&nbsp;
                 
 
@@ -182,7 +182,8 @@
 </ul>
 <p><strong>b. Using mouse</strong><br>When users press right key of the mouse and try to drag the screen, the displacement of the cursor on screen is recorded.<br>And I defined a proper way to compute rotating angle along x and y axis in world space and implement it using <strong>Euler Angle</strong> method.  </p>
 <h3 id="Part-2-Edit-the-pose-and-size-for-each-element"><a href="#Part-2-Edit-the-pose-and-size-for-each-element" class="headerlink" title="Part 2 Edit the pose and size for each element."></a>Part 2 Edit the pose and size for each element.</h3><p>In this case, we should change <strong>world matrix</strong> for each furniture. I designed to use the mouse to adjust the position, rotation angle and size of furnitures.The idea is similar to part 2.b. But note that you need to click the <strong>unlock button</strong> before editing.</p>
-<h2 id="1-2-Result"><a href="#1-2-Result" class="headerlink" title="1.2 Result"></a>1.2 Result</h2><p> <iframe allowtransparency ="no" frameborder =" 1" width =" 870" height ="800" src ="/CGhtml/room/index.html" style="overflow: hidden;overflow-y: scroll; overscroll-behavior-y: contain;"> </iframe> 
+<h3 id="Part-3-Lighting-simulation"><a href="#Part-3-Lighting-simulation" class="headerlink" title="Part 3 Lighting simulation."></a>Part 3 Lighting simulation.</h3><p>When we are buying furniture or designing a room decoration, we may want to see the room under different lighting conditions, such as sunlight simulation. So I added this module. Here I used a <strong>point light</strong> source model, <strong>Lambert  diffuse reflection</strong> and <strong>phong sepecular reflection</strong>, and added ambient light. Users can customize all parameters including colors and light source position.</p>
+<h2 id="1-2-Result"><a href="#1-2-Result" class="headerlink" title="1.2 Result"></a>1.2 Result</h2><p> <iframe allowtransparency ="no" frameborder =" 1" width =" 870" height ="1300" src ="/CGhtml/room/index.html" style="overflow: hidden;overflow-y: scroll; overscroll-behavior-y: contain;"> </iframe> 
 </p>
 
 <h1 id="2-Code-structure"><a href="#2-Code-structure" class="headerlink" title="2 Code structure"></a>2 Code structure</h1><div  align="center">    

@@ -12,18 +12,18 @@ function onRadioButtonChange(value){
 }
 
 function onCheckBoxChange(value_lock){
-    console.log("Checkbox value_lock changed to "+value_lock);   //true or flase
+    // console.log("Checkbox value_lock changed to "+value_lock);   //true or flase
     editing_unlock_button = value_lock;
 }
 
 function onDropdownChange(value){
     selectMeshIdx = value;
-    console.log("selectMeshIdx: "+selectMeshIdx);
+    // console.log("selectMeshIdx: "+selectMeshIdx);
 }
 
 function onViewChange(value){
   selectView = value;
-  console.log("selectView: "+selectView);
+  // console.log("selectView: "+selectView);
   if(selectView == 11 ){ 
       cx = -0.525772281081319;
       cy = 1.724524017978642;
