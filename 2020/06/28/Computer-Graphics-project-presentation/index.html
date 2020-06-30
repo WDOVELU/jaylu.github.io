@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    48 字
+                    245 字
                   </span>&nbsp;
                 
 
@@ -172,11 +172,24 @@
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
             <h1 id="0-Introduction"><a href="#0-Introduction" class="headerlink" title="0 Introduction"></a>0 Introduction</h1><p><strong>Furniture shop virtual tour</strong><br>Here I designed a virtual tour of a furniture shop in camera space (First person view). Users can get close to objects, select them, and modify them by changing their positions, rotation and scale.</p>
-<h1 id="1-DEMO"><a href="#1-DEMO" class="headerlink" title="1 DEMO"></a>1 DEMO</h1><h2 id="1-1-Implemented-Operations"><a href="#1-1-Implemented-Operations" class="headerlink" title="1.1 Implemented Operations"></a>1.1 Implemented Operations</h2><h2 id="1-2-Result"><a href="#1-2-Result" class="headerlink" title="1.2 Result"></a>1.2 Result</h2><p> <iframe allowtransparency ="no" frameborder =" 1" width =" 870" height ="800" src ="/CGhtml/room/index.html" style="overflow: hidden;overflow-y: scroll; overscroll-behavior-y: contain;"> </iframe> 
+<h1 id="1-DEMO"><a href="#1-DEMO" class="headerlink" title="1 DEMO"></a>1 DEMO</h1><h2 id="1-1-Implemented-Operations"><a href="#1-1-Implemented-Operations" class="headerlink" title="1.1 Implemented Operations"></a>1.1 Implemented Operations</h2><h3 id="Part-1-Change-the-view-frame"><a href="#Part-1-Change-the-view-frame" class="headerlink" title="Part 1 Change the view frame"></a>Part 1 Change the view frame</h3><p>If we want to change the view frame, what we should do is just changing the <strong>viewmatrix</strong>. Here, I provided 2 ways to implement the viewmatrix.  </p>
+<p><strong>a. Using keyboard</strong><br>For rotations of the camera location:</p>
+<ul>
+<li>Keys <strong>“W”|”S”|”A”|”D”|”R”|”F”</strong>  are used to change the camera location(cx,cy,cz).<br>For rotations of the camera, I used the <strong>Quaternion Method</strong>:</li>
+<li>Keys <strong>“I”|”K”</strong> are used to change <strong>roll</strong>.  </li>
+<li>Keys <strong>“J”|”L”</strong> are used to change <strong>pitch</strong>.    </li>
+<li>Keys <strong>“Q”|”E”</strong> are used to change <strong>yaw</strong>.  </li>
+</ul>
+<p><strong>b. Using mouse</strong><br>When users press right key of the mouse and try to drag the screen, the displacement of the cursor on screen is recorded.<br>And I defined a proper way to compute rotating angle along x and y axis in world space and implement it using <strong>Euler Angle</strong> method.  </p>
+<h3 id="Part-2-Edit-the-pose-and-size-for-each-element"><a href="#Part-2-Edit-the-pose-and-size-for-each-element" class="headerlink" title="Part 2 Edit the pose and size for each element."></a>Part 2 Edit the pose and size for each element.</h3><p>In this case, we should change <strong>world matrix</strong> for each furniture. I designed to use the mouse to adjust the position, rotation angle and size of furnitures.The idea is similar to part 2.b. But note that you need to click the <strong>unlock button</strong> before editing.</p>
+<h2 id="1-2-Result"><a href="#1-2-Result" class="headerlink" title="1.2 Result"></a>1.2 Result</h2><p> <iframe allowtransparency ="no" frameborder =" 1" width =" 870" height ="800" src ="/CGhtml/room/index.html" style="overflow: hidden;overflow-y: scroll; overscroll-behavior-y: contain;"> </iframe> 
 </p>
 
+<h1 id="2-Code-structure"><a href="#2-Code-structure" class="headerlink" title="2 Code structure"></a>2 Code structure</h1><div  align="center">    
+<img src="/CGhtml/pic/CG_PRE.png" srcset="/img/loading.gif" width = "900" height = "450" align=center />
+</div>
 
-<h1 id="2-Code-structure"><a href="#2-Code-structure" class="headerlink" title="2 Code structure"></a>2 Code structure</h1>
+
             <hr>
           </div>
           <br>
