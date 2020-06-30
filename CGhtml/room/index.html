@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	<head>
+	<meta charset='utf-8'>
+  <title>Virtual ROOM</title>
+  
+  <script type="text/javascript" src="webgl-obj-loader.min.js"></script>
+  <script type="text/javascript" src="utils.js"></script>
+  <script type="text/javascript" src="quaternion.min.js"></script>
+  <script type="text/javascript" src="keyboard.js"></script>
+  <script type="text/javascript" src="GUI_button.js"></script>
+  <script type="text/javascript" src="drawingObj.js"></script>
+  
+  </head>
+  <body style="background-color: rgb(240, 235, 235);">
+    <center>
+		<table>
+    
+		<tr>
+			<canvas id="c" width="850" height="478" style="background-color: black;">
+        Your browser does not support the HTML5 canvas element.
+      </canvas>
+    </tr>
+    </table>
+    <table>
+    <tr style="background-color: white; font-family: courier; padding: 5px;">
+      
+      <td>
+        <p><b> Elements list</b></p>
+        <select id="drop-down" name="" onchange="onDropdownChange(this.value);">
+          <option value ="-1" selected>No selecting</option>
+          <option value ="3" >EmptyRoom</option>
+          <option value ="0">Bed</option>
+          <option value ="1">Table</option>
+          <option value ="2">2DoorUpperCabinet</option>
+          <option value ="4">Sofa</option>
+          <option value ="5">Chair</option>
+          <option value ="6">Closet</option>
+        </select>
+      </td>
+      <td>
+			  <p><b>Editing using mouse</b></p>
+			  <form>
+          <input type="radio" name="light" id="yesl" onchange="onRadioButtonChange(this.value);" value="8"> Translation <br/>
+			  	<input type="radio" name="light" onchange="onRadioButtonChange(this.value);" value="9"> Scaling <br/>
+  				<input type="radio" name="light" onchange="onRadioButtonChange(this.value);" value="10">  Rotation<br/>
+        </form>
+      </td>	
+
+      <td>
+        <p><b> Unlock Button for Editing </b></p>
+          <input type="checkbox" id="chbx" onclick="onCheckBoxChange(this.checked);"/> Unlock <br/>
+      </td>
+      <td>
+			  <p><b>View Selections:</b></p>
+			  <form>
+          <input type="radio" name="light" id="yesl" onchange="onViewChange(this.value);" value="11"> Overview view (Oblique) <br/>
+			  	<input type="radio" name="light" onchange="onViewChange(this.value);" value="12"> Top view <br/>
+  				<input type="radio" name="light" onchange="onViewChange(this.value);" value="13">  Room Center View<br/>
+        </form>
+      </td>		
+    </tr>
+    </table>
+    <h3>Use the following keys to move the camera</h3>
+      <table border="1">
+      <tr>
+        <td>Roll L.: <B>Q</B></td>
+        <td>Forward: <B>W</B></td>
+        <td>Roll R.: <B>E</B></td>
+        <td>Strafe Up: <B>R</B></td>
+      </tr>
+      <tr>
+        <td>Strafe L.: <B>A</B></td>
+        <td>Backward: <B>S</B></td>
+        <td>Strafe R.: <B>D</B></td>
+        <td>Strafe Dw: <B>F</B></td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>look Up: <B>Up</B></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>look L.: <B>Left</B></td>
+        <td>look Dw: <B>Down</B></td>
+        <td>look R.: <B>Right</B></td>
+        <td>&nbsp;</td>
+      </tr>
+      </table>
+      </center>
+
+	</body>
+</html>
